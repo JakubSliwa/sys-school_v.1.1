@@ -18,7 +18,7 @@
 			<tr>
 				<td>${group.name}</td>
 
-				<td><a href="user-groups?id=${group.id}"> Wyswietl</a></td>
+				<td><a href="user-groups?id=${group.id}"> Wyswietl użytkowników tej grupy</a></td>
 			</tr>
 		</c:forEach>
 	</table>
