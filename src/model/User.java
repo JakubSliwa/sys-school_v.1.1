@@ -4,28 +4,43 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class User {
 
-	private Integer id;
-	private Integer userGroupId;
 	private String name;
-	private String mail;
+	private String email;
 	private String password;
+	private int userGroupId;
+	private int id;
 
 	public User() {
 
 	}
 
-	public User(String name, String mail, String password, Integer userGroupId) {
-		this.userGroupId = userGroupId;
+	public User(String name, String email, String password, int userGroupId) {
 		this.name = name;
-		this.mail = mail;
+		this.email = email;
 		this.password = password;
+		this.userGroupId = userGroupId;
 	}
 
-	public Integer getId() {
+	public User(String name, String email, String password, int userGroupId, int id) {
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.userGroupId = userGroupId;
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Imię użytkownika to: " + name + ", email to: " + email + ", id to: " + id + ", id jego groupy to: "
+				+ userGroupId;
+
+	}
+
+	public int getId() {
 		return id;
 	}
 
-	public Integer getUserGroupId() {
+	public int getUserGroupId() {
 		return userGroupId;
 	}
 
@@ -41,12 +56,12 @@ public class User {
 		this.name = name;
 	}
 
-	public String getMail() {
-		return mail;
+	public String getEmail() {
+		return email;
 	}
 
 	public void setMail(String mail) {
-		this.mail = mail;
+		this.email = mail;
 	}
 
 	public String getPassword() {
