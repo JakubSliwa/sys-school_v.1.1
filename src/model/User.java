@@ -44,7 +44,7 @@ public class User {
 		return userGroupId;
 	}
 
-	public void setUserGroupId(Integer userGroupId) {
+	public void setUserGroupId(int userGroupId) {
 		this.userGroupId = userGroupId;
 	}
 

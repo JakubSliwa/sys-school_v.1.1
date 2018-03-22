@@ -1,22 +1,36 @@
 package model;
 
 public class Exercise {
-	private Integer id;
+	private int id;
 	private String title;
 	private String decription;
 
-	public Exercise(Integer id, String title, String decription) {
-		super();
+	public Exercise(int id, String title, String decription) {
 		this.id = id;
 		this.title = title;
 		this.decription = decription;
 	}
 
-	public Integer getId() {
+	public Exercise(String title, String decription) {
+		this.title = title;
+		this.decription = decription;
+	}
+
+	public Exercise() {
+
+	}
+
+	@Override
+	public String toString() {
+		return "Tytuł zadania o id: " + id + ", to: " + title + ". Treść zadania: " + decription;
+
+	}
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
