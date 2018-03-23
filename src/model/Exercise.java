@@ -42,7 +42,7 @@ public class Exercise {
 		this.title = title;
 	}
 
-	public String getDecription() {
+	public String getDescription() {
 		return decription;
 	}
 
