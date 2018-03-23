@@ -3,34 +3,55 @@ package model;
 import java.util.Date;
 
 public class Solution {
-	private Integer id;
+	private int id;
 	private Date created;
 	private Date updated;
 	private String description;
-	private Integer excerciseId;
-	private Integer userId;
+	private int exerciseId;
+	private int userId;
 
 	@Override
 	public String toString() {
-		return "Solution [id=" + id + ", created=" + created + ", updated=" + updated + ", description=" + description
-				+ ", excerciseId=" + excerciseId + ", userId=" + userId + "]";
+		return "Rozwiązanie o id: " + id + ", utworzone: " + created + ", zaktualizowane: " + updated
+				+ ". Treść tego zadania to: " + description + ". Zadanie jest przypisane do zadania o id: " + exerciseId
+				+ " i do użytkwonika o id: " + userId;
 	}
 
-	public Solution(Integer id, Date created, Date updated, String description, Integer excerciseId, Integer userId) {
-		super();
+	public Solution(int id, Date created, Date updated, String description, int excerciseId, int userId) {
 		this.id = id;
 		this.created = created;
 		this.updated = updated;
 		this.description = description;
-		this.excerciseId = excerciseId;
+		this.exerciseId = excerciseId;
 		this.userId = userId;
 	}
 
-	public Integer getId() {
+	public Solution(String description, int userGroupId, int exerciseId, Date created, Date updated) {
+
+		this.description = description;
+		this.userId = userGroupId;
+		this.exerciseId = exerciseId;
+		this.setCreated(created);
+		this.setUpdated(updated);
+	}
+
+	public Solution(String description, int userGroupId, int exerciseId) {
+		this.description = description;
+		this.userId = userGroupId;
+		this.exerciseId = exerciseId;
+		this.setCreated(created);
+		this.setUpdated(updated);
+	}
+
+	public Solution() {
+
+	}
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -58,19 +79,19 @@ public class Solution {
 		this.description = description;
 	}
 
-	public Integer getExcerciseId() {
-		return excerciseId;
+	public int getExcerciseId() {
+		return exerciseId;
 	}
 
-	public void setExcerciseId(Integer excerciseId) {
-		this.excerciseId = excerciseId;
+	public void setExcerciseId(int excerciseId) {
+		this.exerciseId = excerciseId;
 	}
 
-	public Integer getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 

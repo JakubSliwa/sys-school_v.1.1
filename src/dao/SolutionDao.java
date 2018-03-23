@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +10,99 @@ import db.DbUtil;
 import model.Solution;
 
 public class SolutionDao {
+
+	public static boolean saveToDB(Solution solution) {
+		try (Connection conn = DbUtil.getConn()) {
+
+			String sql = "INSERT INTO solutions(description,exercise_id, users_id) VALUES (?,?,?)";
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1, solution.getDescription());
+			preparedStatement.setInt(2, solution.getExcerciseId());
+			preparedStatement.setInt(3, solution.getUserId());
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean updateAllSolutionParameters(int id, String description, int exerciseId, int userId) {
+		try (Connection conn = DbUtil.getConn()) {
+
+			String sql = "UPDATE solutions SET description=?, exercise_id=?, users_id=? where id = ?";
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1, description);
+			preparedStatement.setInt(2, exerciseId);
+			preparedStatement.setInt(3, userId);
+			preparedStatement.setInt(4, id);
+			preparedStatement.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean updateSolutionDescription(int id, String description) {
+		try (Connection conn = DbUtil.getConn()) {
+
+			String sql = "UPDATE solutions SET description=? where id = ?";
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1, description);
+			preparedStatement.setInt(2, id);
+			preparedStatement.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean updateSolutionUserId(int id, int userId) {
+		try (Connection conn = DbUtil.getConn()) {
+
+			String sql = "UPDATE solutions SET users_id=? where id = ?";
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setInt(1, userId);
+			preparedStatement.setInt(2, id);
+			preparedStatement.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean updateSolutionExerciseId(int id, int exerciseId) {
+		try (Connection conn = DbUtil.getConn()) {
+
+			String sql = "UPDATE solutions SET exercise_id=? where id = ?";
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setInt(1, exerciseId);
+			preparedStatement.setInt(2, id);
+			preparedStatement.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public void delete(int id) {
+		try (Connection conn = DbUtil.getConn()) {
+			PreparedStatement preparedStatement = conn.prepareStatement("DELETE	FROM solutions WHERE	id=	?");
+			preparedStatement.setInt(1, id);
+			preparedStatement.executeUpdate();
+			id = 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static List<Solution> loadAll(Integer limit) {
 		List<Solution> result = new ArrayList<>();
@@ -33,7 +125,7 @@ public class SolutionDao {
 	public static Solution loadById(int solutionId) {
 		try (Connection conn = DbUtil.getConn()) {
 			PreparedStatement stmt = conn.prepareStatement(
-					"select id, created, updated, description, exercise_id, users_id " + "from solutions where id =?");
+					"select id, created, updated, description, exercise_id, users_id from solutions where id =?");
 			stmt.setInt(1, solutionId);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
