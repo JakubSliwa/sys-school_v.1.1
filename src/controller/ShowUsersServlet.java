@@ -27,6 +27,8 @@ public class ShowUsersServlet extends HttpServlet {
 		Integer groupId = Integer.parseInt(request.getParameter("id"));
 		List<User> user = UsersDao.loadAllByGroupId(groupId);
 		request.setAttribute("users", user);
+		
+		System.out.println("rozmiar user: " + user.size());
 
 		getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
 	}

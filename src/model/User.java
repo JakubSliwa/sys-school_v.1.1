@@ -29,6 +29,19 @@ public class User {
 		this.id = id;
 	}
 
+	public User(String name, String password, int userGroupId) {
+		this.name = name;
+		this.password = password;
+		this.userGroupId = userGroupId;
+	}
+
+	public User(int id, String name, String email, int userGroupId) {
+		this.name = name;
+		this.email = email;
+		this.userGroupId = userGroupId;
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "Imię użytkownika to: " + name + ", email to: " + email + ", id to: " + id + ", id jego groupy to: "
@@ -60,8 +73,8 @@ public class User {
 		return email;
 	}
 
-	public void setMail(String mail) {
-		this.email = mail;
+	public void setMail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {

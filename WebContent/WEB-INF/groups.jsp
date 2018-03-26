@@ -5,24 +5,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>groups</title>
 </head>
 <body>
 	<%@ include file="/WEB-INF/parts/header.jsp"%>
 	<table>
 		<tr>
-			<th>Nazwa Grupy</th>
+			<th>Nazwa grupy</th>
 			<th>Akcja</th>
 		</tr>
 		<c:forEach items="${groups}" var="group">
 			<tr>
-				<td>${group.name}</td>
+				<td>${group.userGroupName}</td>
 
-				<td><a href="user-groups?id=${group.id}"> Wyswietl użytkowników tej grupy</a></td>
+				<td><a href="show-users-group?id=${group.id}"> Wyswietl</a></td>
 			</tr>
 		</c:forEach>
 	</table>
-
 	<%@ include file="/WEB-INF/parts/footer.jsp"%>
 </body>
 </html>

@@ -19,8 +19,8 @@ public class UsersGroupServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<UserGroup> groups = UserGroupDao.loadAll();
-		request.setAttribute("groups", groups);
+		List<UserGroup> group = UserGroupDao.loadAll();
+		request.setAttribute("groups", group);
 
 		getServletContext().getRequestDispatcher("/WEB-INF/groups.jsp").forward(request, response);
 	}

@@ -59,12 +59,12 @@ public class UsersDao {
 	public static List<User> loadAllByGroupId(Integer groupId) {
 		List<User> result = new ArrayList<>();
 		try (Connection conn = DbUtil.getConn()) {
-			PreparedStatement preparedStatement = conn.prepareStatement(
-					"select id, username, mail, password, user_group_id " + "from users where user_group_id = ?");
+			PreparedStatement preparedStatement = conn
+					.prepareStatement("select id, username, email, user_group_id from users where user_group_id = ?");
 			preparedStatement.setInt(1, groupId);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				result.add(new User(rs.getString("username"), rs.getString("mail"), rs.getString("password"),
+				result.add(new User(rs.getInt("id"), rs.getString("username"), rs.getString("email"),
 						rs.getInt("user_group_id")));
 			}
 		} catch (SQLException e) {
@@ -72,6 +72,23 @@ public class UsersDao {
 		}
 		return result;
 	}
+
+	/*
+	 * public static List<User> loadAllByGroupId(int groupId) { List<User>
+	 * groupUsers = null;
+	 * 
+	 * try (Connection conn = DbUtil.getConn()) { String sql =
+	 * "select id, username, email, password, user_group_id FROM users WHERE user_group_id=?"
+	 * ; PreparedStatement ps = conn.prepareStatement(sql); ps.setInt(1, groupId);
+	 * groupUsers = new ArrayList<>(); ResultSet rs = ps.executeQuery();
+	 * 
+	 * while (rs.next()) { String username = rs.getString("username"); String
+	 * password = rs.getString("password"); String email = rs.getString("email");
+	 * int group_id = rs.getInt("user_group_id");
+	 * 
+	 * groupUsers.add(new User(username, password, email, group_id)); } } catch
+	 * (SQLException e) { e.printStackTrace(); } return groupUsers; }
+	 */
 
 	public static boolean saveToDB(User user) {
 		try (Connection conn = DbUtil.getConn()) {

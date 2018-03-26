@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import db.DbUtil;
-import model.Exercise;
 import model.UserGroup;
 
 public class UserGroupDao {

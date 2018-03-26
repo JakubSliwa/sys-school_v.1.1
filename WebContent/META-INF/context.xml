@@ -1,7 +1,15 @@
-<?xml	version="1.0"	encoding="UTF-8"?>
-<Context>
-	<Resource name="jdbc/school_db_2" auth="Container" type="javax.sql.DataSource"
-		username="root" password="coderslab" driverClassName="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost:3306/school_db_2" maxActive="100" maxIdle="30"
-		maxWait="10000" />
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<Context antiJARLocking="true" path="/PetLogin">
+	<Resource name="jdbc/school_db_2" auth="Container"
+		type="javax.sql.DataSource" username="root" password="coderslab"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/school_db_2" maxActive="100"
+		maxIdle="30" maxWait="10000" testOnBorrow="true"
+		validationQuery="SELECT 1" />
+	<ResourceLink global="ds/flexeraDS" name="ds/flexeraDS"
+		type="javax.sql.DataSource" />
 </Context>
+
+
