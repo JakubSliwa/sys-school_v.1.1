@@ -15,7 +15,7 @@
 		<tr>
 			<th>ID zadania</th>
 			<th>Tytuł zadania</th>
-			<th>Treść/th>
+			<th>Treść</th>
 			<th>Utworzone</th>
 			<th>Zaktualizowane</th>
 		</tr>

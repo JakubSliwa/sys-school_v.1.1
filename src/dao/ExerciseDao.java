@@ -22,7 +22,7 @@ public class ExerciseDao {
 
 			while (rs.next()) {
 				int id = rs.getInt("id");
-				String title = rs.getString("title");
+				String title = rs.getString("tittle");
 				String description = rs.getString("description");
 
 				allExercises.add(new Exercise(id, title, description));

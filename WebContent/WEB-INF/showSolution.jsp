@@ -13,8 +13,7 @@
 	<div>${solution.created}</div>
 	<div>${solution.updated}</div>
 	<div>${solution.userId}</div>
-	<div>${solution.excerciseId}</div>
-
+	<div>${solution.exerciseId}</div>
 	<%@ include file="/WEB-INF/parts/footer.jsp"%>
 </body>
 </html>

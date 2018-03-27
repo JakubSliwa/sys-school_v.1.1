@@ -21,7 +21,7 @@ public class SolutionDao {
 			String sql = "INSERT INTO solutions(description,exercise_id, users_id) VALUES (?,?,?)";
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, solution.getDescription());
-			preparedStatement.setInt(2, solution.getExerciseId());
+			preparedStatement.setInt(2, solution.getExercise().getId());
 			preparedStatement.setInt(3, solution.getUserId());
 			preparedStatement.executeUpdate();
 			return true;
@@ -106,6 +106,21 @@ public class SolutionDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static List<Solution> loadAll() {
+		List<Solution> result = new ArrayList<>();
+		try (Connection conn = DbUtil.getConn()) {
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM solutions");
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				result.add(new Solution(rs.getInt("id"), rs.getDate("created"), rs.getDate("updated"),
+						rs.getString("description"), rs.getInt("exercise_id"), rs.getInt("users_id")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	public static List<Solution> loadAll(Integer limit) {
