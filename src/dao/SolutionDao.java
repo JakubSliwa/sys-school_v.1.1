@@ -1,15 +1,17 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import db.DbUtil;
+import model.Exercise;
 import model.Solution;
+import model.User;
 
 public class SolutionDao {
 
@@ -19,7 +21,7 @@ public class SolutionDao {
 			String sql = "INSERT INTO solutions(description,exercise_id, users_id) VALUES (?,?,?)";
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, solution.getDescription());
-			preparedStatement.setInt(2, solution.getExcerciseId());
+			preparedStatement.setInt(2, solution.getExerciseId());
 			preparedStatement.setInt(3, solution.getUserId());
 			preparedStatement.executeUpdate();
 			return true;
@@ -122,6 +124,35 @@ public class SolutionDao {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	public static List<Solution> loadSolutionByUserId(int userId) {
+		List<Solution> user_solutions = null;
+		try (Connection conn = DbUtil.getConn()) {
+
+			String sql = "SELECT * FROM solutions JOIN users ON solutions.users_id=users.id where	users.id=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, userId);
+			user_solutions = new ArrayList<>();
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Date created = rs.getTimestamp("created");
+				Date updated = rs.getTimestamp("updated");
+				String description = rs.getString("description");
+				int id = rs.getInt("users_id");
+				int exercise_id = rs.getInt("exercise_id");
+				User user = UsersDao.loadById(userId);
+				Exercise exercise = ExerciseDao.loadById(exercise_id);
+
+				user_solutions
+						.add(new Solution(id, created, updated, description, exercise_id, userId, user, exercise));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return user_solutions;
 	}
 
 	public static Solution loadById(int solutionId) {

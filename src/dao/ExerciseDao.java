@@ -42,9 +42,9 @@ public class ExerciseDao {
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
 			if (rs.next()) {
-				String title = rs.getString("title");
+				String tittle = rs.getString("tittle");
 				String description = rs.getString("description");
-				exercise = new Exercise(id, title, description);
+				exercise = new Exercise(id, tittle, description);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

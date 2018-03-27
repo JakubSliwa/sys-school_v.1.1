@@ -14,9 +14,7 @@ import dao.UsersDao;
 import model.User;
 import model.UserGroup;
 
-/**
- * Servlet implementation class ShowUsersServlet
- */
+
 @WebServlet("/ShowUsersServlet")
 public class ShowUsersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

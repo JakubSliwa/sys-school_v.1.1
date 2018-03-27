@@ -17,7 +17,6 @@
 		<c:forEach items="${groups}" var="group">
 			<tr>
 				<td>${group.userGroupName}</td>
-
 				<td><a href="show-users-group?id=${group.id}"> Wyswietl</a></td>
 			</tr>
 		</c:forEach>

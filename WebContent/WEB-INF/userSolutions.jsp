@@ -5,27 +5,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>User</title>
+<title>UserSolution</title>
 </head>
 <body>
 	<%@ include file="/WEB-INF/parts/header.jsp"%>
+
+	<h3>Szczegóły użytkownika ${user.name}</h3>
 	<table>
 		<tr>
-			<th>Identyfikator</th>
-			<th>Nazwa</th>
-			<th>Email</th>
-			<th>Zobacz szczegóły użytkownika</th>
+			<th>ID zadania</th>
+			<th>Tytuł zadania</th>
+			<th>Treść/th>
+			<th>Utworzone</th>
+			<th>Zaktualizowane</th>
 		</tr>
-		<c:forEach items="${users}" var="user">
+		<c:forEach items="${solutionByUserId}" var="userSolutions">
 			<tr>
-				<td>${user.id}</td>
-				<td>${user.name}</td>
-				<td>${user.email}</td>
-				<td><a href="show-user?id=${user.id}"> Wyswietl</a></td>
+				<td>${userSolutions.exerciseId}</td>
+				<td>${userSolutions.getExercise().getTitle()}</td>
+				<td>${userSolutions.description}</td>
+				<td>${userSolutions.created}</td>
+				<td>${userSolutions.updated}</td>
 			</tr>
 		</c:forEach>
 	</table>
-
 	<%@ include file="/WEB-INF/parts/footer.jsp"%>
 </body>
 </html>

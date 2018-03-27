@@ -9,6 +9,8 @@ public class Solution {
 	private String description;
 	private int exerciseId;
 	private int userId;
+	User user;
+	Exercise exercise;
 
 	@Override
 	public String toString() {
@@ -17,13 +19,25 @@ public class Solution {
 				+ " i do użytkwonika o id: " + userId;
 	}
 
-	public Solution(int id, Date created, Date updated, String description, int excerciseId, int userId) {
+	public Solution(int id, Date created, Date updated, String description, int exerciseId, int userId) {
 		this.id = id;
 		this.created = created;
 		this.updated = updated;
 		this.description = description;
-		this.exerciseId = excerciseId;
+		this.exerciseId = exerciseId;
 		this.userId = userId;
+	}
+
+	public Solution(int id, Date created, Date updated, String description, int exerciseId, int userId, User user,
+			Exercise exercise) {
+		this.id = id;
+		this.created = created;
+		this.updated = updated;
+		this.description = description;
+		this.exerciseId = exerciseId;
+		this.userId = userId;
+		this.exercise = exercise;
+		this.user = user;
 	}
 
 	public Solution(String description, int userGroupId, int exerciseId, Date created, Date updated) {
@@ -79,12 +93,12 @@ public class Solution {
 		this.description = description;
 	}
 
-	public int getExcerciseId() {
+	public int getExerciseId() {
 		return exerciseId;
 	}
 
-	public void setExcerciseId(int excerciseId) {
-		this.exerciseId = excerciseId;
+	public void setExerciseId(int exerciseId) {
+		this.exerciseId = exerciseId;
 	}
 
 	public int getUserId() {
@@ -93,6 +107,22 @@ public class Solution {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Exercise getExercise() {
+		return exercise;
+	}
+
+	public void setExercise(Exercise exercise) {
+		this.exercise = exercise;
 	}
 
 }
