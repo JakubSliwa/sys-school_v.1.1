@@ -25,8 +25,9 @@ public class UsersDao {
 				String password = rs.getString("password");
 				String email = rs.getString("email");
 				int userGroupId = rs.getInt("user_group_id");
+				int userId = rs.getInt("id");
 
-				allUsers.add(new User(username, password, email, userGroupId));
+				allUsers.add(new User(username, password, email, userGroupId, userId));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

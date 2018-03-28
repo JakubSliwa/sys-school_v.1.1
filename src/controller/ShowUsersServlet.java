@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.UserGroupDao;
 import dao.UsersDao;
 import model.User;
-import model.UserGroup;
+
 
 
 @WebServlet("/ShowUsersServlet")

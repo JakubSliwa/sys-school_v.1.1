@@ -21,7 +21,7 @@ public class User {
 		this.userGroupId = userGroupId;
 	}
 
-	public User(String name, String email, String password, int userGroupId, int id) {
+	public User(String name, String password, String email, int userGroupId, int id) {
 		this.name = name;
 		this.email = email;
 		this.password = password;

@@ -5,55 +5,65 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Panel</title>
+<title>PanelAdmin</title>
 </head>
 <body>
 	<%@ include file="/WEB-INF/parts/header.jsp"%>
 	<div>
+		<span>Dodaj nową grupę użytkowników</span>
 		<table>
 			<tr>
-				<th>Opis</th>
-				<th>Data utworzenia</th>
-				<th>Data modyfikacji</th>
-				<th>Identyfikator uzytkownika</th>
-				<th>Identyfikator zadania</th>
-				<th>Akcje</th>
+				<th>ID grupy</th>
+				<th>Nazwa grupy</th>
+				<th>Przejdź do edycji grup użytkowników</th>
 			</tr>
 
-			<c:forEach items="${solution}" var="solution">
+			<c:forEach items="${userGroup}" var="userGroup">
 				<tr>
-					<td>${solution.description}</td>
-					<td>${solution.created}</td>
-					<td>${solution.updated}</td>
-					<td>${solution.userId}</td>
-					<td>${solution.exerciseId}</td>
+					<td>${userGroup.id}</td>
+					<td>${userGroup.userGroupName}</td>
+					<td><a href="editUserGroup?id=${userGroup.id}"> Link do
+							edycji</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
+	<hr width="100%" color="green" align="left">
 	<div>
+		<span>Dodaj nowego użytkownika</span>
 		<table>
 			<tr>
+				<th>ID użytkownika</th>
 				<th>Nazwa użytkownika</th>
-
+				<th>Email użytkownika</th>
+				<th>Przejdź do edycji wybranego użytkownika</th>
 			</tr>
 
 			<c:forEach items="${user}" var="user">
 				<tr>
+					<td>${user.id}</td>
 					<td>${user.name}</td>
+					<td>${user.email}</td>
+					<td>Link do edycji</td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
+	<hr width="100%" color="green" align="left">
 	<div>
+		<span>Dodaj nowe zadanie</span>
 		<table>
 			<tr>
+				<th>ID zadania</th>
 				<th>Tytuł zadania</th>
+				<th>Przejdź do edycji wybranego zadania</th>
 			</tr>
 
 			<c:forEach items="${exercise}" var="exercise">
 				<tr>
+					<td>${exercise.id}</td>
 					<td>${exercise.title}</td>
+					<td>Link do edycji</td>
 				</tr>
 			</c:forEach>
 		</table>
