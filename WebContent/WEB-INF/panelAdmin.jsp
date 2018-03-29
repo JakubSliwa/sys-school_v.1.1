@@ -10,7 +10,8 @@
 <body>
 	<%@ include file="/WEB-INF/parts/header.jsp"%>
 	<div>
-		<span>Dodaj nową grupę użytkowników</span>
+		<span><a href="addNewUserGroup">Dodaj nową grupę
+				użytkowników</a></span>
 		<table>
 			<tr>
 				<th>ID grupy</th>

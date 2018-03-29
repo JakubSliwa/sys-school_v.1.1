@@ -10,14 +10,12 @@ public class UserGroup {
 	}
 
 	public UserGroup(int id, String name) {
-
 		this.id = id;
 		this.userGroupName = name;
 	}
 
-	public UserGroup(String userGroupName) {
-
-		this.userGroupName = userGroupName;
+	public UserGroup(String name) {
+		this.userGroupName = name;
 	}
 
 	@Override
