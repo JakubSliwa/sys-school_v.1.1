@@ -42,7 +42,7 @@ public class UserGroupDao {
 		}
 	}
 
-	public void delete(int id) {
+	public static void delete(int id) {
 		try (Connection conn = DbUtil.getConn()) {
 			PreparedStatement preparedStatement = conn.prepareStatement("DELETE	FROM user_group WHERE	id=	?");
 			preparedStatement.setInt(1, id);

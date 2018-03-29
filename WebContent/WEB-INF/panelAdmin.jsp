@@ -11,7 +11,7 @@
 	<%@ include file="/WEB-INF/parts/header.jsp"%>
 	<div>
 		<span><a href="addNewUserGroup">Dodaj nową grupę
-				użytkowników</a></span>
+				użytkowników&nbsp;</a></span>
 		<table>
 			<tr>
 				<th>ID grupy</th>
@@ -31,7 +31,7 @@
 	</div>
 	<hr width="100%" color="green" align="left">
 	<div>
-		<span>Dodaj nowego użytkownika</span>
+		<span><a href="">Dodaj nowego użytkownika&nbsp;</a></span>
 		<table>
 			<tr>
 				<th>ID użytkownika</th>
@@ -52,7 +52,7 @@
 	</div>
 	<hr width="100%" color="green" align="left">
 	<div>
-		<span>Dodaj nowe zadanie</span>
+		<span><a href="">Dodaj nowe zadanie&nbsp;</a></span>
 		<table>
 			<tr>
 				<th>ID zadania</th>
