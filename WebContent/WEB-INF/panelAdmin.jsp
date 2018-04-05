@@ -45,7 +45,7 @@
 					<td>${user.id}</td>
 					<td>${user.name}</td>
 					<td>${user.email}</td>
-					<td>Link do edycji</td>
+					<td><a href="editUser?id=${user.id}">Link do edycji</a></td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -22,12 +22,12 @@ public class UsersDao {
 
 			while (rs.next()) {
 				String username = rs.getString("username");
-				String password = rs.getString("password");
 				String email = rs.getString("email");
+				String password = rs.getString("password");
 				int userGroupId = rs.getInt("user_group_id");
 				int userId = rs.getInt("id");
 
-				allUsers.add(new User(username, password, email, userGroupId, userId));
+				allUsers.add(new User(username, email, password, userGroupId, userId));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -45,11 +45,11 @@ public class UsersDao {
 			ResultSet rs = preparedStatement.executeQuery();
 			if (rs.next()) {
 				String username = rs.getString("username");
-				String password = rs.getString("password");
 				String email = rs.getString("email");
+				String password = rs.getString("password");
 				int userGroupId = rs.getInt("user_group_id");
 
-				user = new User(username, password, email, userGroupId);
+				user = new User(username, email, password, userGroupId);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

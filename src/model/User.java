@@ -17,21 +17,21 @@ public class User {
 	public User(String name, String email, String password, int userGroupId) {
 		this.name = name;
 		this.email = email;
-		this.password = password;
+		this.password = setPassword(password);
 		this.userGroupId = userGroupId;
 	}
 
-	public User(String name, String password, String email, int userGroupId, int id) {
+	public User(String name, String email, String password, int userGroupId, int id) {
 		this.name = name;
 		this.email = email;
-		this.password = password;
+		this.password = setPassword(password);
 		this.userGroupId = userGroupId;
 		this.id = id;
 	}
 
 	public User(String name, String password, int userGroupId) {
 		this.name = name;
-		this.password = password;
+		this.password = setPassword(password);
 		this.userGroupId = userGroupId;
 	}
 
@@ -81,8 +81,8 @@ public class User {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		this.password = BCrypt.hashpw(password, BCrypt.gensalt());
+	public String setPassword(String password) {
+		return this.password = BCrypt.hashpw(password, BCrypt.gensalt());
 	}
 
 }
