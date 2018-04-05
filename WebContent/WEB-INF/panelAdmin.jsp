@@ -31,7 +31,7 @@
 	</div>
 	<hr width="100%" color="green" align="left">
 	<div>
-		<span><a href="">Dodaj nowego użytkownika&nbsp;</a></span>
+		<span><a href="addNewUser">Dodaj nowego użytkownika&nbsp;</a></span>
 		<table>
 			<tr>
 				<th>ID użytkownika</th>

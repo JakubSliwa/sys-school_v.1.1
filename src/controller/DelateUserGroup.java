@@ -22,4 +22,5 @@ public class DelateUserGroup extends HttpServlet {
 
 		response.sendRedirect("panel");
 	}
+	
 }
