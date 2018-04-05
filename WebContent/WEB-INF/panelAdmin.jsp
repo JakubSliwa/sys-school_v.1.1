@@ -64,7 +64,7 @@
 				<tr>
 					<td>${exercise.id}</td>
 					<td>${exercise.title}</td>
-					<td>Link do edycji</td>
+					<td><a href="editExercise?id=${exercise.id}">Link do edycji</a></td>
 				</tr>
 			</c:forEach>
 		</table>

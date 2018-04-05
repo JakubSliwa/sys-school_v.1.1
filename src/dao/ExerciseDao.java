@@ -90,6 +90,7 @@ public class ExerciseDao {
 			String sql = "UPDATE exercise SET	tittle=? where id	= ?";
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, title);
+			preparedStatement.setInt(2, id);
 			preparedStatement.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -104,6 +105,7 @@ public class ExerciseDao {
 			String sql = "UPDATE exercise SET	description=? where id	= ?";
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, description);
+			preparedStatement.setInt(2, id);
 			preparedStatement.executeUpdate();
 			return true;
 		} catch (SQLException e) {

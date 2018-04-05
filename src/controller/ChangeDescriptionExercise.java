@@ -10,22 +10,27 @@ import javax.servlet.http.HttpServletResponse;
 import dao.ExerciseDao;
 import model.Exercise;
 
-@WebServlet("/AddNewExercise")
-public class AddNewExercise extends HttpServlet {
+@WebServlet("/ChangeDescriptionExercise")
+public class ChangeDescriptionExercise extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/WEB-INF/adminAddNewExercise.jsp").forward(request, response);
+		Integer ex_id = Integer.parseInt(request.getParameter("id"));
+		Exercise exercise = ExerciseDao.loadById(ex_id);
+
+		request.setAttribute("loadedExercise", exercise);
+
+		getServletContext().getRequestDispatcher("/WEB-INF/adminChangeDescriptionExercise.jsp?id=" + ex_id)
+				.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String newTitle = request.getParameter("newTitle");
+		Integer ex_id = Integer.parseInt(request.getParameter("id"));
 		String newDescription = request.getParameter("newDescription");
 
-		Exercise exercise = new Exercise(newTitle, newDescription);
-		ExerciseDao.saveToDB(exercise);
+		ExerciseDao.updateDescription(ex_id, newDescription);
 
 		response.sendRedirect("panel");
 	}
