@@ -12,18 +12,23 @@
 		<tr>
 			<th>Nazwa użytkownika</th>
 			<th>Email użytkownika</th>
-			<th>Hasło użytkownika</th>
 			<th>Id grupy użytkownika</th>
+			<th>${editedUser.id}</th>
+			<th></th>
+			<th></th>
 		</tr>
 		<tr>
 			<td>${editedUser.name}</td>
 			<td>${editedUser.email}</td>
-			<td>${editedUser.password}</td>
 			<td>${editedUser.userGroupId}</td>
+		</tr>
+		<tr>
 			<td><a href="ChangeNameUser?id=${editedUser.id}"> Zmień
 					nazwę użytkownika</a></td>
-			<td><a href="ChangeEmailUser?id=${editedUser.email}"> Zmień
+			<td><a href="ChangeEmailUser?id=${editedUser.id}"> Zmień
 					email tego uzytkownika</a></td>
+			<td><a href="ChangeUserGroup?id=${editedUser.id}"> Przypisz
+					do innej grupy</a></td>
 			<td><a href="DelateUser?id=${editedUser.id}"> Usuń tego
 					użytkownika</a></td>
 		</tr>

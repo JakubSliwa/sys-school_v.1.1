@@ -52,7 +52,7 @@
 	</div>
 	<hr width="100%" color="green" align="left">
 	<div>
-		<span><a href="">Dodaj nowe zadanie&nbsp;</a></span>
+		<span><a href="AddNewExercise">Dodaj nowe zadanie&nbsp;</a></span>
 		<table>
 			<tr>
 				<th>ID zadania</th>

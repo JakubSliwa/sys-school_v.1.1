@@ -48,8 +48,9 @@ public class UsersDao {
 				String email = rs.getString("email");
 				String password = rs.getString("password");
 				int userGroupId = rs.getInt("user_group_id");
+				int userId = rs.getInt("id");
 
-				user = new User(username, email, password, userGroupId);
+				user = new User(username, email, password, userGroupId, userId);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -73,23 +74,6 @@ public class UsersDao {
 		}
 		return result;
 	}
-
-	/*
-	 * public static List<User> loadAllByGroupId(int groupId) { List<User>
-	 * groupUsers = null;
-	 * 
-	 * try (Connection conn = DbUtil.getConn()) { String sql =
-	 * "select id, username, email, password, user_group_id FROM users WHERE user_group_id=?"
-	 * ; PreparedStatement ps = conn.prepareStatement(sql); ps.setInt(1, groupId);
-	 * groupUsers = new ArrayList<>(); ResultSet rs = ps.executeQuery();
-	 * 
-	 * while (rs.next()) { String username = rs.getString("username"); String
-	 * password = rs.getString("password"); String email = rs.getString("email");
-	 * int group_id = rs.getInt("user_group_id");
-	 * 
-	 * groupUsers.add(new User(username, password, email, group_id)); } } catch
-	 * (SQLException e) { e.printStackTrace(); } return groupUsers; }
-	 */
 
 	public static boolean saveToDB(User user) {
 		try (Connection conn = DbUtil.getConn()) {
@@ -191,7 +175,7 @@ public class UsersDao {
 		}
 	}
 
-	public void delete(int id) {
+	public static void delete(int id) {
 		try (Connection conn = DbUtil.getConn()) {
 			PreparedStatement preparedStatement = conn.prepareStatement("DELETE	FROM	users	WHERE	id=	?");
 			preparedStatement.setInt(1, id);
@@ -199,6 +183,21 @@ public class UsersDao {
 			id = 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+	}
+
+	public static boolean updateUserGroup(Integer id, String newUserGroup) {
+		try (Connection conn = DbUtil.getConn()) {
+			String sql = "UPDATE users SET	user_group_id=? where id = ?";
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1, newUserGroup);
+			preparedStatement.setInt(2, id);
+			preparedStatement.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 }
