@@ -8,8 +8,15 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/parts/userHeader.jsp"%>
-	<h1>WITAJ UŻYTKOWNIKU! W PRZYSZŁOŚCI TUTAJ ZNAJDZIESZ DODATKOWE
-		FUNKCJONALNOŚCI!</h1>
+	<h1>WITAJ UŻYTKOWNIKU! ${loadedUser.name} W PRZYSZŁOŚCI TUTAJ
+		ZNAJDZIESZ DODATKOWE FUNKCJONALNOŚCI!</h1>
+
+	<div>
+		<span>Wyślij wiadomość </span><span>Sprawdź wiadomości </span><span>Wyświetl
+			listę Twoich zadań </span><span>Ustawienia konta </span>
+	</div>
+
+	<div>Twoje id to: ${loadedUser.id}</div>
 	<%@ include file="/WEB-INF/parts/userFooter.jsp"%>
 </body>
 </html>

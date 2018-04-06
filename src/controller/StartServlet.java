@@ -34,9 +34,7 @@ public class StartServlet extends HttpServlet {
 		String systemPassword = user.getPassword();
 		Integer systemUserGroupId = user.getUserGroupId();
 
-		System.out.println("-------");
-		System.out.println(systemPassword);
-		System.out.println(systemUserGroupId);
+		request.setAttribute("loginEmail", loginEmail);
 
 		if (BCrypt.checkpw(loginPassword, systemPassword) && systemUserGroupId == 1) {
 			System.out.println("opcja 1");

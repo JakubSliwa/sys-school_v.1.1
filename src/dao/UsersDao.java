@@ -78,30 +78,21 @@ public class UsersDao {
 	public static User loadByEmail(String email) {
 		User user = null;
 		try (Connection conn = DbUtil.getConn()) {
-			PreparedStatement preparedStatement = conn
-					.prepareStatement("SELECT email, password, user_group_id FROM users WHERE email ='" + email + "';");
+			PreparedStatement preparedStatement = conn.prepareStatement(
+					"SELECT email, password, user_group_id, id FROM users WHERE email ='" + email + "';");
 			ResultSet rs = preparedStatement.executeQuery();
 			if (rs.next()) {
 				String mail = rs.getString("email");
 				String password = rs.getString("password");
 				int userGroupId = rs.getInt("user_group_id");
-				user = new User(mail, password, userGroupId);
+				int userId = rs.getInt("id");
+				user = new User(mail, password, userGroupId, userId);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return user;
 	}
-
-	/*
-	 * public static String loadByEmail(String email) { try (Connection conn =
-	 * DbUtil.getConn()) { PreparedStatement preStm = conn.
-	 * prepareStatement("SELECT password, user_group_id FROM users WHERE email LIKE '?'"
-	 * ); preStm.setString(1, email); ResultSet rs = preStm.executeQuery(); if
-	 * (rs.next()) { return rs.getString("password"); return
-	 * rs.getInt("user_group_id"); } else { return null; } } catch (SQLException e)
-	 * { e.printStackTrace(); return null; } }
-	 */
 
 	public static boolean saveToDB(User user) {
 		try (Connection conn = DbUtil.getConn()) {

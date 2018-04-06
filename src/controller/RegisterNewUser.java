@@ -10,28 +10,26 @@ import javax.servlet.http.HttpServletResponse;
 import dao.UsersDao;
 import model.User;
 
-@WebServlet("/mainUserView")
-public class MainUserView extends HttpServlet {
+@WebServlet("/RegisterNewUser")
+public class RegisterNewUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		getServletContext().getRequestDispatcher("/WEB-INF/registerNewUser.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String newName = request.getParameter("registerName");
+		String newEmail = request.getParameter("registerEmail");
+		String newPassword = request.getParameter("registerPassword");
+		Integer newUserGroupId = 1;
 
-		System.out.println(request.getParameter("loginEmail"));
-		String userEmail = request.getParameter("loginEmail");
+		User newUser = new User(newName, newEmail, newPassword, newUserGroupId);
+		UsersDao.saveToDB(newUser);
 
-		User loadedUser = UsersDao.loadByEmail(userEmail);
-		Integer user_id = loadedUser.getId();
-
-		User loadedUserNew = UsersDao.loadById(user_id);
-		request.setAttribute("loadedUser", loadedUserNew);
-
-		getServletContext().getRequestDispatcher("/WEB-INF/userStartPage.jsp?=" + user_id).forward(request, response);
+		response.sendRedirect("StartServlet");
 	}
 
 }
