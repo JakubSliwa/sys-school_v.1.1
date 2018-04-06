@@ -27,7 +27,7 @@
 					Zmień opis tego zadania</a></td>
 			<td><a href="ShowSolutions?id=${editedExercise.id}"> Sprawdz
 					rozwiązania</a></td>
-			<td><a href="DelateExercise?id=${editedExercise.id}"> Usuń
+			<td><a href="DeleteExercise?id=${editedExercise.id}"> Usuń
 					zadanie</a></td>
 		</tr>
 

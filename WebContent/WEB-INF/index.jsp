@@ -9,8 +9,6 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/parts/header.jsp"%>
-	<span>Zaloguj się</span>
-	<span>Zarejestruj się</span>	
 	<br>
 	<h3>Ostatnio dodane rozwiazania</h3>
 	<table>
@@ -34,7 +32,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	
+
 
 	<%@ include file="/WEB-INF/parts/footer.jsp"%>
 </body>

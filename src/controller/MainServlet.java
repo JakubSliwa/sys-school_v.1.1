@@ -29,4 +29,15 @@ public class MainServlet extends HttpServlet {
 
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String limitString = getServletContext().getInitParameter("number-solution");
+		Integer limit = Integer.valueOf(limitString);
+
+		List<Solution> list = SolutionDao.loadAll(limit);
+		System.out.println("rozmiar: " + list.size());
+		request.setAttribute("solutions", list);
+		getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+
+	}
 }

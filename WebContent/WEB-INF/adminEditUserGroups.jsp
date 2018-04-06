@@ -19,7 +19,7 @@
 					nazwę grupy</a></td>
 			<td><a href="show-users-group?id=${userGroup.id}"> Zobacz
 					użytkowników grupy</a></td>
-			<td><a href="DelateUserGroup?id=${userGroup.id}"> Usuń tą
+			<td><a href="DeleteUserGroup?id=${userGroup.id}"> Usuń tą
 					grupę</a></td>
 		</tr>
 

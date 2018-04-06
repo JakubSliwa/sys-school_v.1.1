@@ -114,7 +114,7 @@ public class ExerciseDao {
 		}
 	}
 
-	public void delete(int id) {
+	public static void delete(int id) {
 		try (Connection conn = DbUtil.getConn()) {
 			PreparedStatement preparedStatement = conn.prepareStatement("DELETE	FROM exercise WHERE	id=	?");
 			preparedStatement.setInt(1, id);

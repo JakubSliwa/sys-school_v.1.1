@@ -17,21 +17,21 @@ public class User {
 	public User(String name, String email, String password, int userGroupId) {
 		this.name = name;
 		this.email = email;
-		this.password = setPassword(password);
+		this.setPassword(password);
 		this.userGroupId = userGroupId;
 	}
 
 	public User(String name, String email, String password, int userGroupId, int id) {
 		this.name = name;
 		this.email = email;
-		this.password = setPassword(password);
+		this.setPassword(password);
 		this.userGroupId = userGroupId;
 		this.id = id;
 	}
 
-	public User(String name, String password, int userGroupId) {
-		this.name = name;
-		this.password = setPassword(password);
+	public User(String email, String password, int userGroupId) {
+		this.email = email;
+		this.password = password;
 		this.userGroupId = userGroupId;
 	}
 

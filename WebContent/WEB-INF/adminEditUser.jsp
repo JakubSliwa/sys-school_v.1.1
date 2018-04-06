@@ -29,7 +29,7 @@
 					email tego uzytkownika</a></td>
 			<td><a href="ChangeUserGroup?id=${editedUser.id}"> Przypisz
 					do innej grupy</a></td>
-			<td><a href="DelateUser?id=${editedUser.id}"> Usuń tego
+			<td><a href="DeleteUser?id=${editedUser.id}"> Usuń tego
 					użytkownika</a></td>
 		</tr>
 
