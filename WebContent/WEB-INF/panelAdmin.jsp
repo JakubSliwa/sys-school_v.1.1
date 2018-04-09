@@ -6,10 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PanelAdmin</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<%@ include file="/WEB-INF/parts/header.jsp"%>
-	<div>
+	<div class="jumbotron">
 		<span><a href="addNewUserGroup">Dodaj nową grupę
 				użytkowników&nbsp;</a></span>
 		<table>
@@ -64,7 +68,8 @@
 				<tr>
 					<td>${exercise.id}</td>
 					<td>${exercise.title}</td>
-					<td><a href="editExercise?id=${exercise.id}">Link do edycji</a></td>
+					<td><a href="editExercise?id=${exercise.id}">Link do
+							edycji</a></td>
 				</tr>
 			</c:forEach>
 		</table>

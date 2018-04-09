@@ -10,6 +10,5 @@
 		validationQuery="SELECT 1" />
 	<ResourceLink global="ds/flexeraDS" name="ds/flexeraDS"
 		type="javax.sql.DataSource" />
+
 </Context>
-
-
