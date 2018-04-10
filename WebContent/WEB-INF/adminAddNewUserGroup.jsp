@@ -11,14 +11,15 @@
 </head>
 <body>
 	<%@ include file="/parts/header.jsp"%>
-	<div>
+	<div class="jumbotron">
 		<p>Wpisz w formularzu nazwę nowej grupy</p>
-
-		<form action="addNewUserGroup" method="post">
-			Nowa nazwa grupy: <br> <input type="text" name="newName" /> <br>
-			<button type="submit">Dodaj grupę</button>
-		</form>
-
+		<div class="form-group" style="width: 500px;">
+			<form action="addNewUserGroup" method="post">
+				Nowa nazwa grupy: <br> <input class="form-control"
+					placeholder="Podaj nazwę grupy" type="text" name="newName" /> <br>
+				<button class="btn btn-info" type="submit">Dodaj grupę</button>
+			</form>
+		</div>
 	</div>
 	<%@ include file="/parts/footer.jsp"%>
 </body>

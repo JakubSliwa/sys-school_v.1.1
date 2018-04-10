@@ -4,22 +4,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title> <link rel="stylesheet"
+<title>Insert title here</title>
+<link rel="stylesheet"
 	href="https://bootswatch.com/4/superhero/bootstrap.min.css">
 </head>
 <body>
 	<%@ include file="/parts/header.jsp"%>
-	<div>
+	<div class="jumbotron">
 		<p>Zmień grupę użytkownika o id ${loadedUser.id}. Obecna grupa to
 			${loadedUser.userGroupId}</p>
+		<div class="form-group" style="width: 500px;">
+			<form action="ChangeUserGroup" method="post">
+				Podaj numer id nowej grupy: <br> <input class="form-control"
+					placeholder="Podaj ID" type="text" name="newUserGroup" /> <input
+					type="hidden" name="id" value="${loadedUser.id}" /> <br>
+				<button class="btn btn-info" type="submit">Zmień</button>
+			</form>
 
-		<form action="ChangeUserGroup" method="post">
-			Podaj numer id nowej grupy: <br> <input type="text"
-				name="newUserGroup" /> <input type="hidden" name="id"
-				value="${loadedUser.id}" /> <br>
-			<button type="submit">Zmień</button>
-		</form>
-
+		</div>
 	</div>
 	<%@ include file="/parts/footer.jsp"%>
 </body>

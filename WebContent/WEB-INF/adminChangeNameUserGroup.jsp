@@ -5,21 +5,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Change user group name</title> <link rel="stylesheet"
+<title>Change user group name</title>
+<link rel="stylesheet"
 	href="https://bootswatch.com/4/superhero/bootstrap.min.css">
 </head>
 <body>
 	<%@ include file="/parts/header.jsp"%>
-	<div>
+	<div class="jumbotron">
 		<p>Zmień nazwę groupy o id ${userGroup.id}. Aktualna nazwa to
 			${userGroup.userGroupName}</p>
-
-		<form action="ChangeNameUserGroup" method="post">
-			Nowa nazwa grupy: <br> <input type="text" name="newName" /> <input
-				type="hidden" name="id" value="${userGroup.id}" /> <br>
-			<button type="submit">Zmień</button>
-		</form>
-
+		<div class="form-group" style="width: 500px;">
+			<form action="ChangeNameUserGroup" method="post">
+				Nowa nazwa grupy: <br> <input class="form-control"
+					placeholder="Podaj nową nazwę grupy" type="text" name="newName" />
+				<input type="hidden" name="id" value="${userGroup.id}" /> <br>
+				<button class="btn btn-info" type="submit">Zmień</button>
+			</form>
+		</div>
 	</div>
 	<%@ include file="/parts/footer.jsp"%>
 </body>

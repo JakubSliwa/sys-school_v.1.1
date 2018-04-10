@@ -4,25 +4,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add new User</title>
+<title>Dodaj nowego użytkownika</title>
 <link rel="stylesheet"
 	href="https://bootswatch.com/4/superhero/bootstrap.min.css">
 </head>
 <body>
 	<%@ include file="/parts/header.jsp"%>
-	<div>
-		<p>Wpisz w formularzu dane nowego użytkownika</p>
 
-		<form class="form-group" action="addNewUser" method="post">
-			Nazwa: <br class="form-control"> <input type="text"
-				name="newName" /> <br> Email: <br> <input type="text"
-				name="newEmail" /><br> Hasło: <br> <input type="text"
-				name="newPassword" /><br> Podaj ID grupy, do której chcesz
-			przypisać użytkownika: <br> <input type="text"
-				name="newUserGroupId" /><br>
-			<button type="submit">Dodaj użytkownika</button>
-		</form>
 
+	<div class="jumbotron">
+		Wpisz w formularzu dane nowego użytkownika
+		<div class="form-group" style="width: 500px;">
+			<form action="addNewUser" method="post">
+				Nazwa: <br class="form-control"> <input class="form-control"
+					placeholder="Wpisz nazwę użytkownika" type="text" name="newName" />
+				<br> Email: <br> <input class="form-control"
+					placeholder="Wpisz email" type="text" name="newEmail" /><br>
+				Hasło: <br> <input class="form-control"
+					placeholder="Wpisz hasło" type="text" name="newPassword" /><br>
+				Podaj ID grupy, do której chcesz przypisać użytkownika: <br> <input
+					class="form-control" placeholder="Wpisz ID grupy" type="text"
+					name="newUserGroupId" /><br>
+				<button class="btn btn-info" type="submit">Dodaj
+					użytkownika</button>
+			</form>
+		</div>
 	</div>
 	<%@ include file="/parts/footer.jsp"%>
 </body>

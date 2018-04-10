@@ -5,27 +5,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title> <link rel="stylesheet"
+<title>Edytuj grupę</title>
+<link rel="stylesheet"
 	href="https://bootswatch.com/4/superhero/bootstrap.min.css">
 </head>
 <body>
 	<%@ include file="/parts/header.jsp"%>
-	<table>
-		<tr>
-			<th>Nazwa grupy</th>
-		</tr>
-		<tr>
-			<td>${userGroup.userGroupName}</td>
-			<td><a href="ChangeNameUserGroup?id=${userGroup.id}"> Zmień
-					nazwę grupy</a></td>
-			<td><a href="show-users-group?id=${userGroup.id}"> Zobacz
-					użytkowników grupy</a></td>
-			<td><a href="DeleteUserGroup?id=${userGroup.id}"> Usuń tą
-					grupę</a></td>
-		</tr>
+	<div class="jumbotron">
 
-	</table>
+		<table class="table table-hover">
+			<tr align="center">
+				<th>Nazwa grupy</th>
+			</tr>
+			<tr align="center">
+				<td>${userGroup.userGroupName}</td>
 
+			</tr>
+			<tr align="center">
+				<td><a class="btn btn-success"
+					href="ChangeNameUserGroup?id=${userGroup.id}"> Zmień nazwę
+						grupy</a></td>
+				<td><a class="btn btn-success"
+					href="show-users-group?id=${userGroup.id}"> Zobacz użytkowników
+						grupy</a></td>
+				<td><a class="btn btn-danger"
+					href="DeleteUserGroup?id=${userGroup.id}"> Usuń tą grupę</a></td>
+			</tr>
+
+		</table>
+	</div>
 	<%@ include file="/parts/footer.jsp"%>
 </body>
 </html>

@@ -5,23 +5,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>groups</title> <link rel="stylesheet"
+<title>groups</title>
+<link rel="stylesheet"
 	href="https://bootswatch.com/4/superhero/bootstrap.min.css">
 </head>
 <body>
 	<%@ include file="/parts/header.jsp"%>
-	<table>
-		<tr>
-			<th>Nazwa grupy</th>
-			<th>Akcja</th>
-		</tr>
-		<c:forEach items="${groups}" var="group">
-			<tr>
-				<td>${group.userGroupName}</td>
-				<td><a href="show-users-group?id=${group.id}"> Wyswietl</a></td>
+
+	<div class="jumbotron">
+
+
+		<table class="table table-hover">
+			<tr align="center">
+				<th>Nazwa grupy</th>
+				<th>Akcja</th>
 			</tr>
-		</c:forEach>
-	</table>
+			<c:forEach items="${groups}" var="group">
+				<tr align="center">
+					<td>${group.userGroupName}</td>
+					<td><a class="btn btn-link"
+						href="show-users-group?id=${group.id}"> Wyswietl</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 	<%@ include file="/parts/footer.jsp"%>
 </body>
 </html>

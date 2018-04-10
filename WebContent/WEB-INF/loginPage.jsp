@@ -22,7 +22,8 @@
 			<div>
 				<p>
 					Zaloguj się, żeby przejść dalej. <span>Jeżeli nie posiadasz
-						konta, <a href="RegisterNewUser">zarejestruj się tutaj.</a>
+						konta, <a class="btn btn-link" href="RegisterNewUser">zarejestruj
+							się tutaj.</a>
 					</span>
 				</p>
 

@@ -4,38 +4,44 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Edit user</title><link rel="stylesheet"
+<title>Edit user</title>
+<link rel="stylesheet"
 	href="https://bootswatch.com/4/superhero/bootstrap.min.css">
 </head>
 <body>
 	<%@ include file="/parts/header.jsp"%>
-	<table>
-		<tr>
-			<th>Nazwa użytkownika</th>
-			<th>Email użytkownika</th>
-			<th>Id grupy użytkownika</th>
-			<th>${editedUser.id}</th>
-			<th></th>
-			<th></th>
-		</tr>
-		<tr>
-			<td>${editedUser.name}</td>
-			<td>${editedUser.email}</td>
-			<td>${editedUser.userGroupId}</td>
-		</tr>
-		<tr>
-			<td><a href="ChangeNameUser?id=${editedUser.id}"> Zmień
-					nazwę użytkownika</a></td>
-			<td><a href="ChangeEmailUser?id=${editedUser.id}"> Zmień
-					email tego uzytkownika</a></td>
-			<td><a href="ChangeUserGroup?id=${editedUser.id}"> Przypisz
-					do innej grupy</a></td>
-			<td><a href="DeleteUser?id=${editedUser.id}"> Usuń tego
-					użytkownika</a></td>
-		</tr>
+	<div class="jumbotron">
 
-	</table>
+		<table class="table table-hover">
+			<tr align="center">
+				<th>Nazwa użytkownika</th>
+				<th>Email użytkownika</th>
+				<th>Id grupy użytkownika</th>
+				<th>Id użytkownika</th>
 
+			</tr>
+			<tr align="center">
+				<td>${editedUser.name}</td>
+				<td>${editedUser.email}</td>
+				<td>${editedUser.userGroupId}</td>
+				<td>${editedUser.id}</td>
+			</tr>
+			<tr align="center">
+				<td><a class="btn btn-success"
+					href="ChangeNameUser?id=${editedUser.id}"> Zmień nazwę
+						użytkownika</a></td>
+				<td><a class="btn btn-success"
+					href="ChangeEmailUser?id=${editedUser.id}"> Zmień email tego
+						uzytkownika</a></td>
+				<td><a class="btn btn-success"
+					href="ChangeUserGroup?id=${editedUser.id}"> Przypisz do innej
+						grupy</a></td>
+				<td><a class="btn btn-danger"
+					href="DeleteUser?id=${editedUser.id}"> Usuń tego użytkownika</a></td>
+			</tr>
+
+		</table>
+	</div>
 	<%@ include file="/parts/footer.jsp"%>
 </body>
 </html>

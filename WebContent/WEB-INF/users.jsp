@@ -11,22 +11,25 @@
 </head>
 <body>
 	<%@ include file="/parts/header.jsp"%>
-	<table>
-		<tr>
-			<th>Identyfikator</th>
-			<th>Nazwa</th>
-			<th>Email</th>
-			<th>Zobacz szczegóły użytkownika</th>
-		</tr>
-		<c:forEach items="${users}" var="user">
-			<tr>
-				<td>${user.id}</td>
-				<td>${user.name}</td>
-				<td>${user.email}</td>
-				<td><a href="show-user?id=${user.id}"> Wyswietl</a></td>
+	<div class="jumbotron">
+		<table class="table table-hover">
+			<tr align="center">
+				<th>Identyfikator</th>
+				<th>Nazwa</th>
+				<th>Email</th>
+				<th>Zobacz szczegóły użytkownika</th>
 			</tr>
-		</c:forEach>
-	</table>
+			<c:forEach items="${users}" var="user">
+				<tr align="center">
+					<td>${user.id}</td>
+					<td>${user.name}</td>
+					<td>${user.email}</td>
+					<td><a class="btn btn-link" href="show-user?id=${user.id}">
+							Wyswietl</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 
 	<%@ include file="/parts/footer.jsp"%>
 </body>

@@ -4,21 +4,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title> <link rel="stylesheet"
+<title>Insert title here</title>
+<link rel="stylesheet"
 	href="https://bootswatch.com/4/superhero/bootstrap.min.css">
 </head>
 <body>
 	<%@ include file="/parts/header.jsp"%>
-	<div>
+	<div class="jumbotron">
 		<p>Zmień email użytkownika o id ${loadedUser.id}. Obecna email to
 			${loadedUser.email}</p>
+		<div class="form-group" style="width: 500px;">
+			<form action="ChangeEmailUser" method="post">
+				Nowy email użytkownika: <br> <input class="form-control"
+					placeholder="Podaj nowy email użytkownika" type="text"
+					name="newEmail" /> <input type="hidden" name="id"
+					value="${loadedUser.id}" /> <br>
+				<button class="btn btn-info" type="submit">Zmień</button>
+			</form>
 
-		<form action="ChangeEmailUser" method="post">
-			Nowy email użytkownika: <br> <input type="text" name="newEmail" />
-			<input type="hidden" name="id" value="${loadedUser.id}" /> <br>
-			<button type="submit">Zmień</button>
-		</form>
-
+		</div>
 	</div>
 	<%@ include file="/parts/footer.jsp"%>
 </body>

@@ -11,26 +11,27 @@
 </head>
 <body>
 	<%@ include file="/parts/header.jsp"%>
-
-	<h3>Szczegóły użytkownika ${user.name}</h3>
-	<table>
-		<tr>
-			<th>ID zadania</th>
-			<th>Tytuł zadania</th>
-			<th>Treść</th>
-			<th>Utworzone</th>
-			<th>Zaktualizowane</th>
-		</tr>
-		<c:forEach items="${solutionByUserId}" var="userSolutions">
-			<tr>
-				<td>${userSolutions.exerciseId}</td>
-				<td>${userSolutions.getExercise().getTitle()}</td>
-				<td>${userSolutions.description}</td>
-				<td>${userSolutions.created}</td>
-				<td>${userSolutions.updated}</td>
+	<div class="jumbotron">
+		<h3>Szczegóły użytkownika ${user.name}</h3>
+		<table class="table table-hover">
+			<tr align="center">
+				<th>ID zadania</th>
+				<th>Tytuł zadania</th>
+				<th>Treść</th>
+				<th>Utworzone</th>
+				<th>Zaktualizowane</th>
 			</tr>
-		</c:forEach>
-	</table>
+			<c:forEach items="${solutionByUserId}" var="userSolutions">
+				<tr align="center">
+					<td>${userSolutions.exerciseId}</td>
+					<td>${userSolutions.getExercise().getTitle()}</td>
+					<td>${userSolutions.description}</td>
+					<td>${userSolutions.created}</td>
+					<td>${userSolutions.updated}</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 	<%@ include file="/parts/footer.jsp"%>
 </body>
 </html>

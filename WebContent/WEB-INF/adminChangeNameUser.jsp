@@ -4,20 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Zmień nazwę użytkownika</title>
 </head>
 <body>
 	<%@ include file="/parts/header.jsp"%>
-	<div>
+	<div class="jumbotron">
 		<p>Zmień nazwę użytkownika o id ${loadedUser.id}. Obecna nazwa to
 			${loadedUser.name}</p>
+		<div class="form-group" style="width: 500px;">
+			<form action="ChangeNameUser" method="post">
+				Nowa nazwa użytkownika: <br> <input class="form-control"
+					placeholder="Podaj nową nazwę użytkownika" type="text"
+					name="newName" /> <input type="hidden" name="id"
+					value="${loadedUser.id}" /> <br>
+				<button class="btn btn-info" type="submit">Zmień</button>
+			</form>
 
-		<form action="ChangeNameUser" method="post">
-			Nowa nazwa użytkownika: <br> <input type="text" name="newName" />
-			<input type="hidden" name="id" value="${loadedUser.id}" /> <br>
-			<button type="submit">Zmień</button>
-		</form>
-
+		</div>
 	</div>
 	<%@ include file="/parts/footer.jsp"%>
 </body>
