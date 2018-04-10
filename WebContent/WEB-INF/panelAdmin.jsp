@@ -6,17 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PanelAdmin</title>
-
+<!-- <style>
+@import url('css/style.css');
+</style> -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
-	<%@ include file="/WEB-INF/parts/header.jsp"%>
+	<%@ include file="/parts/header.jsp"%>
 	<div class="jumbotron">
 		<span><a href="addNewUserGroup">Dodaj nową grupę
 				użytkowników&nbsp;</a></span>
-		<table>
+		<table class="table table-hover">
 			<tr>
 				<th>ID grupy</th>
 				<th>Nazwa grupy</th>
@@ -33,10 +35,10 @@
 			</c:forEach>
 		</table>
 	</div>
-	<hr width="100%" color="green" align="left">
-	<div>
-		<span><a href="addNewUser">Dodaj nowego użytkownika&nbsp;</a></span>
-		<table>
+	
+	<div class="jumbotron">
+		<span><a href="addNewUser" class="btn btn-info">Dodaj nowego użytkownika&nbsp;</a></span>
+		<table class="table table-hover">
 			<tr>
 				<th>ID użytkownika</th>
 				<th>Nazwa użytkownika</th>
@@ -54,10 +56,10 @@
 			</c:forEach>
 		</table>
 	</div>
-	<hr width="100%" color="green" align="left">
-	<div>
+	
+	<div class="jumbotron">
 		<span><a href="AddNewExercise">Dodaj nowe zadanie&nbsp;</a></span>
-		<table>
+		<table class="table table-hover">
 			<tr>
 				<th>ID zadania</th>
 				<th>Tytuł zadania</th>
@@ -74,6 +76,6 @@
 			</c:forEach>
 		</table>
 	</div>
-	<%@ include file="/WEB-INF/parts/footer.jsp"%>
+	<%@ include file="/parts/footer.jsp"%>
 </body>
 </html>

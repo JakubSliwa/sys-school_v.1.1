@@ -5,9 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Hello!</title>
+<link rel="stylesheet"
+	href="https://bootswatch.com/4/superhero/bootstrap.min.css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/parts/userHeader.jsp"%>
+	<%@ include file="/parts/userHeader.jsp"%>
 	<h1>WITAJ UŻYTKOWNIKU! ${loadedUser.name} W PRZYSZŁOŚCI TUTAJ
 		ZNAJDZIESZ DODATKOWE FUNKCJONALNOŚCI!</h1>
 
@@ -17,6 +19,6 @@
 	</div>
 
 	<div>Twoje id to: ${loadedUser.id}</div>
-	<%@ include file="/WEB-INF/parts/userFooter.jsp"%>
+	<%@ include file="/parts/userFooter.jsp"%>
 </body>
 </html>

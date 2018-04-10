@@ -5,22 +5,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add new User</title>
+<link rel="stylesheet"
+	href="https://bootswatch.com/4/superhero/bootstrap.min.css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/parts/header.jsp"%>
+	<%@ include file="/parts/header.jsp"%>
 	<div>
 		<p>Wpisz w formularzu dane nowego użytkownika</p>
 
-		<form action="addNewUser" method="post">
-			Nazwa: <br> <input type="text" name="newName" /> <br>
-			Email: <br> <input type="text" name="newEmail" /><br>
-			Hasło: <br> <input type="text" name="newPassword" /><br>
-			Podaj ID grupy, do której chcesz przypisać użytkownika: <br> <input
-				type="text" name="newUserGroupId" /><br>
+		<form class="form-group" action="addNewUser" method="post">
+			Nazwa: <br class="form-control"> <input type="text"
+				name="newName" /> <br> Email: <br> <input type="text"
+				name="newEmail" /><br> Hasło: <br> <input type="text"
+				name="newPassword" /><br> Podaj ID grupy, do której chcesz
+			przypisać użytkownika: <br> <input type="text"
+				name="newUserGroupId" /><br>
 			<button type="submit">Dodaj użytkownika</button>
 		</form>
 
 	</div>
-	<%@ include file="/WEB-INF/parts/footer.jsp"%>
+	<%@ include file="/parts/footer.jsp"%>
 </body>
 </html>

@@ -6,9 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add new user group</title>
+<link rel="stylesheet"
+	href="https://bootswatch.com/4/superhero/bootstrap.min.css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/parts/header.jsp"%>
+	<%@ include file="/parts/header.jsp"%>
 	<div>
 		<p>Wpisz w formularzu nazwę nowej grupy</p>
 
@@ -18,6 +20,6 @@
 		</form>
 
 	</div>
-	<%@ include file="/WEB-INF/parts/footer.jsp"%>
+	<%@ include file="/parts/footer.jsp"%>
 </body>
 </html>

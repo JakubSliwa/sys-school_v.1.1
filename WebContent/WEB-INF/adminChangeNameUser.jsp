@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="/WEB-INF/parts/header.jsp"%>
+	<%@ include file="/parts/header.jsp"%>
 	<div>
 		<p>Zmień nazwę użytkownika o id ${loadedUser.id}. Obecna nazwa to
 			${loadedUser.name}</p>
@@ -19,6 +19,6 @@
 		</form>
 
 	</div>
-	<%@ include file="/WEB-INF/parts/footer.jsp"%>
+	<%@ include file="/parts/footer.jsp"%>
 </body>
 </html>

@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Change user group name</title>
+<title>Change user group name</title> <link rel="stylesheet"
+	href="https://bootswatch.com/4/superhero/bootstrap.min.css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/parts/header.jsp"%>
+	<%@ include file="/parts/header.jsp"%>
 	<div>
 		<p>Zmień nazwę groupy o id ${userGroup.id}. Aktualna nazwa to
 			${userGroup.userGroupName}</p>
@@ -20,6 +21,6 @@
 		</form>
 
 	</div>
-	<%@ include file="/WEB-INF/parts/footer.jsp"%>
+	<%@ include file="/parts/footer.jsp"%>
 </body>
 </html>

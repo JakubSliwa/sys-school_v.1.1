@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>groups</title>
+<title>groups</title> <link rel="stylesheet"
+	href="https://bootswatch.com/4/superhero/bootstrap.min.css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/parts/header.jsp"%>
+	<%@ include file="/parts/header.jsp"%>
 	<table>
 		<tr>
 			<th>Nazwa grupy</th>
@@ -21,6 +22,6 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<%@ include file="/WEB-INF/parts/footer.jsp"%>
+	<%@ include file="/parts/footer.jsp"%>
 </body>
 </html>

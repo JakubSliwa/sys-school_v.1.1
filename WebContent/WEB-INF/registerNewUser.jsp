@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Zarejestruj się!</title>
+<title>Zarejestruj się!</title> <link rel="stylesheet"
+	href="https://bootswatch.com/4/superhero/bootstrap.min.css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/parts/userHeader.jsp"%>
+	<%@ include file="/parts/userHeader.jsp"%>
 	<div>
 		<p>Wpisz w formularzu swoje dane</p>
 
@@ -19,6 +20,6 @@
 		</form>
 		<div>Po zarejestrowaniu wrócisz do ekranu logowania</div>
 	</div>
-	<%@ include file="/WEB-INF/parts/userFooter.jsp"%>
+	<%@ include file="/parts/userFooter.jsp"%>
 </body>
 </html>
