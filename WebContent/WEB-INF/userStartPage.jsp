@@ -16,16 +16,36 @@
 		String email = (String) session.getAttribute("systemUserEmail");
 		Integer id = (Integer) session.getAttribute("systemUserId");
 	%>
-	<h1>
+	<img alt="avatar"
+		src="https://images.vexels.com/media/users/3/145908/preview2/52eabf633ca6414e60a7677b0b917d92-male-avatar-maker.jpg"
+		style="width: 200px; height: 200px;">
+	<div class="jumbotron" style="display: inline;">
+
+
+		<span><a class="btn btn-info" href=""> Wyślij wiadomość</a></span> <span><a
+			class="btn btn-info" href="">Sprawdź wiadomości</a> </span> <span><a
+			class="btn btn-info" href="">Wyświetl listę Twoich zadań</a> </span> <span><a
+			class="btn btn-warning" href="">Ustawienia konta</a> </span>
+
+
+
+
+	</div>
+	<h1 style="display: inline-block; float: right;">
 		WITAJ UŻYTKOWNIKU!
 		<%=name%>
 		W PRZYSZŁOŚCI TUTAJ ZNAJDZIESZ DODATKOWE FUNKCJONALNOŚCI!
 	</h1>
-
-	<div>
-		<span>Wyślij wiadomość </span><span>Sprawdź wiadomości </span><span>Wyświetl
-			listę Twoich zadań </span><span>Ustawienia konta </span>
+	<br>
+	<div class="btn-group-vertical" data-toggle="buttons">
+		<button type="button" class="btn btn-primary">Button</button>
+		<button type="button" class="btn btn-primary">Button</button>
+		<button type="button" class="btn btn-primary">Button</button>
+		<button type="button" class="btn btn-primary">Button</button>
+		<button type="button" class="btn btn-primary">Button</button>
+		<button type="button" class="btn btn-primary">Button</button>
 	</div>
+
 
 	<div>
 		Twoje id to:
@@ -33,6 +53,7 @@
 	<div>
 		Twoje mail to:
 		<%=email%></div>
+
 	<%@ include file="/parts/userFooter.jsp"%>
 </body>
 </html>
