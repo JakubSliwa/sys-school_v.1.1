@@ -24,17 +24,16 @@ public class User {
 	public User(String name, String email, String password, int userGroupId, int id) {
 		this.name = name;
 		this.email = email;
-		this.setPassword(password);
-		this.userGroupId = userGroupId;
-		this.id = id;
-	}
-
-	public User(String email, String password, int userGroupId, int id) {
-		this.email = email;
 		this.password = password;
 		this.userGroupId = userGroupId;
 		this.id = id;
 	}
+
+	/*
+	 * public User(String email, String password, int userGroupId, int id) {
+	 * this.email = email; this.password = password; this.userGroupId = userGroupId;
+	 * this.id = id; }
+	 */
 
 	public User(int id, String name, String email, int userGroupId) {
 		this.name = name;

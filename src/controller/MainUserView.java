@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.eclipse.jdt.internal.compiler.parser.ParserBasicInformation;
 
 import dao.UsersDao;
 import model.User;
@@ -21,15 +24,14 @@ public class MainUserView extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println(request.getSession().getAttribute("systemUsername"));
 
-		System.out.println(request.getParameter("loginEmail"));
-		String userEmail = request.getParameter("loginEmail");
-
-		User loadedUser = UsersDao.loadByEmail(userEmail);
-		Integer user_id = loadedUser.getId();
-
-		User loadedUserNew = UsersDao.loadById(user_id);
-		request.setAttribute("loadedUser", loadedUserNew);
+		HttpSession session = request.getSession();
+		Integer user_id = (Integer) session.getAttribute("systemUserId");
+		/*
+		 * User loadedUserNew = UsersDao.loadById(user_id);
+		 * request.setAttribute("loadedUser", loadedUserNew);
+		 */
 
 		getServletContext().getRequestDispatcher("/WEB-INF/userStartPage.jsp?=" + user_id).forward(request, response);
 	}

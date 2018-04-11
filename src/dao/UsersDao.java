@@ -79,14 +79,15 @@ public class UsersDao {
 		User user = null;
 		try (Connection conn = DbUtil.getConn()) {
 			PreparedStatement preparedStatement = conn.prepareStatement(
-					"SELECT email, password, user_group_id, id FROM users WHERE email ='" + email + "';");
+					"SELECT  username, email, password, user_group_id, id FROM users WHERE email ='" + email + "';");
 			ResultSet rs = preparedStatement.executeQuery();
 			if (rs.next()) {
+				String username = rs.getString("username");
 				String mail = rs.getString("email");
 				String password = rs.getString("password");
 				int userGroupId = rs.getInt("user_group_id");
 				int userId = rs.getInt("id");
-				user = new User(mail, password, userGroupId, userId);
+				user = new User(username, mail, password, userGroupId, userId);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
