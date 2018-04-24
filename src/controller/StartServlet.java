@@ -30,7 +30,7 @@ public class StartServlet extends HttpServlet {
 		String loginEmail = request.getParameter("loginEmail");
 		String loginPassword = request.getParameter("loginPassword");
 		User user = UsersDao.loadByEmail(loginEmail);
-		
+
 		String systemPassword = user.getPassword();
 		Integer systemUserGroupId = user.getUserGroupId();
 
@@ -41,7 +41,7 @@ public class StartServlet extends HttpServlet {
 			session.setAttribute("systemUserEmail", user.getEmail());
 			session.setAttribute("systemUserGroupId", user.getUserGroupId());
 			session.setAttribute("systemUserId", user.getId());
-			System.out.println("opcja 1");
+			System.out.println("startServlet: " + session.getAttribute("systemUserId"));
 			getServletContext().getRequestDispatcher("/mainUserView").forward(request, response);
 		} else if (BCrypt.checkpw(loginPassword, systemPassword) && systemUserGroupId == 2) {
 			session.setAttribute("systemUsername", user.getName());

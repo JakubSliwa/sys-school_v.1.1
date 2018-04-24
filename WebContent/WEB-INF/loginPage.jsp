@@ -44,7 +44,6 @@
 			</center>
 		</fieldset>
 	</div>
-
 	<%@ include file="/parts/unloggedFooter.jsp"%>
 
 	<script

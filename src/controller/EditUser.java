@@ -20,7 +20,7 @@ public class EditUser extends HttpServlet {
 		Integer user_id = Integer.parseInt(request.getParameter("id"));
 
 		User user = UsersDao.loadById(user_id);
-
+		request.setAttribute("user", user);
 		request.setAttribute("editedUser", user);
 
 		getServletContext().getRequestDispatcher("/WEB-INF/adminEditUser.jsp?id=" + user_id).forward(request, response);
