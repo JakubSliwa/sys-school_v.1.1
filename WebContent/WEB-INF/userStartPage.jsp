@@ -13,6 +13,7 @@
 
 <body>
 	<c:set var="systemUserId" value="${sessionScope['user_id']}" />
+
 	<%@ include file="/parts/userHeader.jsp"%>
 	<%
 		String name = (String) session.getAttribute("systemUsername");
@@ -29,7 +30,7 @@
 			</div>
 			<div class="col-xs-12 .col-sm-6 .col-lg-8">
 				<div class="jumbotron">
-					<a class="btn btn-info" href=""> Wyślij wiadomość</a> <a
+					<a class="btn btn-info"> Wyślij wiadomość</a> <a
 						class="btn btn-info" href="">Sprawdź wiadomości</a> <a
 						class="btn btn-info" href="">Wyświetl listę Twoich zadań</a> <a
 						class="btn btn-warning" href="">Ustawienia konta</a> <a
@@ -37,9 +38,20 @@
 				</div>
 			</div>
 		</div>
-		<span>Witaj <%=name%> <%=id%> w przyszłości znajdziesz tutaj dodatkowe
+		<span>Witaj <%=name%> w przyszłości znajdziesz tutaj dodatkowe
 			funkcjonalności.
 		</span>
+		<div class="row">
+			<div class="alert alert-dismissible alert-success" id="messagesSuccessAfterSend" >
+				<button type="button" class="close"  id="clickToHideMessagesSuccessAfterSend"data-dismiss="alert">&times;</button>
+				<strong>Well done!</strong> You successfully send a message.
+			</div>
+			<div class="alert alert-dismissible alert-primary" id="messagesErrorAfterSend">
+				<button type="button" class="close" id="clickToHideMessagesErrorAfterSend" data-dismiss="alert">&times;</button>
+				<strong>Error!</strong> Message isn't send
+			</div>
+		</div>
+
 	</div>
 
 	<div class="container-fluid">
@@ -67,13 +79,12 @@
 										<div class="modal-body">
 											<textarea id="text" class="form-control" rows="5"
 												name="message" placeholder="write your message..."></textarea>
-											<input type="hidden" name="message"
-												value="${systemUserId2.id}" />
+
 										</div>
 										<div class="modal-footer">
 											<div class="form-group">
-												<button type="submit" class="btn btn-info">Wyślij
-													wiadomość</button>
+												<button type="submit" class="btn btn-info"
+													id="clickToShowIsSend">Wyślij wiadomość</button>
 												<button type="button" class="btn btn-secondary"
 													id="clickToHideSender" data-dismiss="modal">Close</button>
 											</div>
@@ -178,11 +189,6 @@
 				</div>
 			</div>
 
-
-
-			<div class="col-xs-6 .col-lg-4"></div>
-
-
 			<div class="col-xs-12 .col-sm-6 .col-lg-8">
 				<div class="jumbotron">
 					<table class="table table-hover">
@@ -200,66 +206,95 @@
 
 
 
-		</div>
-	</div>
+
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<script>
+                                $(function() {
+                                $('#hidePomodoro').hide()
+                                $('#clickToShowPom').on('click', function() {
+                                    if ($('#hidePomodoro').css('display') === 'none') {
+                                        $('#hidePomodoro').fadeIn('slow');
+                                    }
+                                });
+
+                                $('#clickToHidePomodoro').on('click', function() {
+                                    if ($('#hidePomodoro').css('display') !== 'none') {
+                                        $('#hidePomodoro').fadeOut('slow');
+                                    }
+                                });
+
+                                $('#hideToDo').hide()
+                                $('#clickToShowToDo').on('click', function() {
+                                    if ($('#hideToDo').css('display') === 'none') {
+                                        $('#hideToDo').fadeIn('slow');
+                                    }
+                                });
+                                $('#clickToHideToDo').on('click', function() {
+                                    if ($('#hideToDo').css('display') !== 'none') {
+                                        $('#hideToDo').fadeOut('slow');
+                                    }
+                                });
+
+                                $('#hideSendMess').hide()
+                                $('#clickToShowSender').on('click', function() {
+                                    if ($('#hideSendMess').css('display') === 'none') {
+                                        $('#hideSendMess').fadeIn('slow');
+                                    }
+                                });
+                                $('#clickToHideSender').on('click', function() {
+                                    if ($('#hideSendMess').css('display') !== 'none') {
+                                        $('#hideSendMess').fadeOut('slow');
+                                    }
+                                });
+
+                                $('#hideGetMess').hide()
+                                $('#clickToShowMess').on('click', function() {
+                                    if ($('#hideGetMess').css('display') === 'none') {
+                                        $('#hideGetMess').fadeIn('slow');
+                                    }
+                                });
+                                $('#clickToHideMess').on('click', function() {
+                                    if ($('#hideGetMess').css('display') !== 'none') {
+                                        $('#hideGetMess').fadeOut('slow');
+                                    }
+                                });
+                                var test = "<%=request.getAttribute("isSend")%>";	  
+                                $("#messagesSuccessAfterSend").hide()
+                                $('#clickToShowIsSend').on('click', function() {
+                                    var test = "<%=request.getAttribute("isSend")%>";	
+                                    
+                                    if (test == "yes" ||  $('#messagesSuccessAfterSend').css('display') === 'none') { 
+								        $('#messagesSuccessAfterSend').fadeIn('slow');
+										}	      
+                                });
+
+                                $("#messagesErrorAfterSend").hide()
+                                $('#clickToShowIsSend').on('click', function() {
+                                    var test = "<%=request.getAttribute("isSend")%>";                                 
+									console.log(test);						    
+                                    if (test == "no" &&  $('#messagesErrorAfterSend').css('display') === 'none') {                                                                
+								        $('#messagesErrorAfterSend').fadeIn('slow');
+								        										}	      
+                                });
+                                
+                                $('#clickToHideMessagesSuccessAfterSend').on('click', function() {
+                                    if ($('#messagesSuccessAfterSend').css('display') !== 'none') {
+                                        $('#messagesSuccessAfterSend').fadeOut('slow');
+                                    }
+                                });
+                                
+                                $('#clickToHideMessagesErrorAfterSend').on('click', function() {
+                                    if ($('#messagesErrorAfterSend').css('display') !== 'none') {
+                                        $('#messagesErrorAfterSend').fadeOut('slow');
+                                    }
+                                });
+                                
+				});
+			</script>
 
 
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script>
-		$(function() {
-			$('#hidePomodoro').hide()
-			$('#clickToShowPom').on('click', function() {
-				if ($('#hidePomodoro').css('display') === 'none') {
-					$('#hidePomodoro').fadeIn('slow');
-				}
-			});
-
-			$('#clickToHidePomodoro').on('click', function() {
-				if ($('#hidePomodoro').css('display') !== 'none') {
-					$('#hidePomodoro').fadeOut('slow');
-				}
-			});
-
-			$('#hideToDo').hide()
-			$('#clickToShowToDo').on('click', function() {
-				if ($('#hideToDo').css('display') === 'none') {
-					$('#hideToDo').fadeIn('slow');
-				}
-			});
-			$('#clickToHideToDo').on('click', function() {
-				if ($('#hideToDo').css('display') !== 'none') {
-					$('#hideToDo').fadeOut('slow');
-				}
-			});
-
-			$('#hideSendMess').hide()
-			$('#clickToShowSender').on('click', function() {
-				if ($('#hideSendMess').css('display') === 'none') {
-					$('#hideSendMess').fadeIn('slow');
-				}
-			});
-			$('#clickToHideSender').on('click', function() {
-				if ($('#hideSendMess').css('display') !== 'none') {
-					$('#hideSendMess').fadeOut('slow');
-				}
-			});
-
-			$('#hideGetMess').hide()
-			$('#clickToShowMess').on('click', function() {
-				if ($('#hideGetMess').css('display') === 'none') {
-					$('#hideGetMess').fadeIn('slow');
-				}
-			});
-			$('#clickToHideMess').on('click', function() {
-				if ($('#hideGetMess').css('display') !== 'none') {
-					$('#hideGetMess').fadeOut('slow');
-				}
-			});
-
-		})
-	</script>
-	<%@ include file="/parts/userFooter.jsp"%>
+			<%@ include file="/parts/userFooter.jsp"%>
 </body>
 
 </html>

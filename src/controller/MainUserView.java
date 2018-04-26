@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,16 +25,17 @@ public class MainUserView extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("MainUserView: " + request.getSession().getAttribute("systemUserId"));
-		System.out.println("MainUserView: " + request.getSession().getAttribute("systemUsername"));
-		System.out.println("MainUserView: " + request.getSession().getAttribute("systemUserEmail"));
+
 		List<User> user = UsersDao.loadAll();
 		request.setAttribute("user", user);
 
 		HttpSession session = request.getSession();
 		Integer user_id = (Integer) session.getAttribute("systemUserId");
+		String isSend = (String) request.getAttribute("isSend");
+		System.out.println(isSend);
 
 		getServletContext().getRequestDispatcher("/WEB-INF/userStartPage.jsp?=" + user_id).forward(request, response);
+
 	}
 
 }

@@ -17,7 +17,8 @@ public class Message {
 		this.text = text;
 	}
 
-	public Message(int id, int targetUserId, Timestamp date, String addedBy, String text) {
+	public Message(Timestamp date, int id, int targetUserId, String addedBy, String text) {
+
 		this.id = id;
 		this.targetUserId = targetUserId;
 		this.date = date;
@@ -59,6 +60,12 @@ public class Message {
 
 	public int getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "Message [id=" + id + ", targetUserId=" + targetUserId + ", date=" + date + ", addedBy=" + addedBy
+				+ ", text=" + text + "]";
 	}
 
 }

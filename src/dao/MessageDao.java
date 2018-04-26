@@ -17,11 +17,11 @@ public class MessageDao {
 
 		try (Connection conn = DbUtil.getConn()) {
 
-			String sql = "insert into message(users_id, text,  addedBy) values(?, ?, ?,);";
+			String sql = "insert into message(users_id, message,  addedBy) values(?, ?, ?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, message.getId());
+			ps.setInt(1, message.getTargetUserId());
 			ps.setString(2, message.getText());
-			ps.setString(4, message.getAddedBy());
+			ps.setString(3, message.getAddedBy());
 			ps.executeUpdate();
 			return true;
 
@@ -45,7 +45,7 @@ public class MessageDao {
 				Timestamp date = rs.getTimestamp("date");
 				String addedBy = rs.getString("addedBy");
 				String text = rs.getString("message");
-				messages.add(new Message(message_id, targetUserId, date, addedBy, text));
+				messages.add(new Message(date, message_id, targetUserId, addedBy, text));
 			}
 
 		} catch (SQLException e) {
