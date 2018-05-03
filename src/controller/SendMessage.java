@@ -3,7 +3,6 @@ package controller;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,12 +25,26 @@ public class SendMessage extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-		User user = (User) request.getSession().getAttribute("user");
 
+		System.out.println("---------------------");
+		HttpSession session = request.getSession();
+		Integer user_id = (Integer) session.getAttribute("systemUserId");
+		System.out.println(user_id);
+		
+		User userSes = (User) session.getAttribute("sessionUser");
+		session.setAttribute("systemUserId", userSes.getId());	
+		System.out.println(session.getAttribute("systemUserId"));
+		Integer userSes_id = userSes.getId();
+		System.out.println(userSes_id);
+		
 		String senderEmail = (String) session.getAttribute("systemUserEmail");
 		User sender = UsersDao.loadByEmail(senderEmail);
+		Integer user_idTest = sender.getId();
+		request.setAttribute("user_idTest", user_idTest);
+		
+		System.out.println(user_idTest);
 
+		System.out.println(senderEmail);
 		String targetUserIdString = request.getParameter("select");
 		Integer targetUserId = Integer.parseInt(targetUserIdString);
 
@@ -44,8 +57,9 @@ public class SendMessage extends HttpServlet {
 		if (isAdded == true) {
 			String isSend = "yes";
 			request.setAttribute("isSend", isSend);
+			
 
-			getServletContext().getRequestDispatcher("/mainUserView").forward(request, response);
+			response.sendRedirect("mainUserView");
 
 		} else {
 			String isSend = "no";

@@ -3,17 +3,17 @@ package model;
 public class Exercise {
 	private int id;
 	private String title;
-	private String decription;
+	private String description;
 
-	public Exercise(int id, String title, String decription) {
+	public Exercise(int id, String title, String description) {
 		this.id = id;
 		this.title = title;
-		this.decription = decription;
+		this.description = description;
 	}
 
 	public Exercise(String title, String decription) {
 		this.title = title;
-		this.decription = decription;
+		this.description = decription;
 	}
 
 	public Exercise() {
@@ -22,7 +22,7 @@ public class Exercise {
 
 	@Override
 	public String toString() {
-		return "Tytuł zadania o id: " + id + ", to: " + title + ". Treść zadania: " + decription;
+		return "Tytuł zadania o id: " + id + ", to: " + title + ". Treść zadania: " + description;
 
 	}
 
@@ -43,11 +43,11 @@ public class Exercise {
 	}
 
 	public String getDescription() {
-		return decription;
+		return description;
 	}
 
-	public void setDecription(String decription) {
-		this.decription = decription;
+	public void setDescription(String decription) {
+		this.description = decription;
 	}
 
 }

@@ -9,6 +9,13 @@
 <title>Hello!</title>
 <link rel="stylesheet"
 	href="https://bootswatch.com/4/superhero/bootstrap.min.css">
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
 </head>
 
 <body>
@@ -19,35 +26,40 @@
 		String name = (String) session.getAttribute("systemUsername");
 		String email = (String) session.getAttribute("systemUserEmail");
 		Integer id = (Integer) session.getAttribute("systemUserId");
+		String isSend = (String) request.getAttribute("isSend");
+		
+		
 	%>
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-12 .col-sm-6 .col-lg-8">
+			<div class="col-xs-12 .col-sm-6 .col-lg-8" >
 				<img alt="avatar"
 					src="https://images.vexels.com/media/users/3/145908/preview2/52eabf633ca6414e60a7677b0b917d92-male-avatar-maker.jpg"
 					style="width: 180px; height: 180px display:inline-block">
 			</div>
 			<div class="col-xs-12 .col-sm-6 .col-lg-8">
-				<div class="jumbotron">
-					<a class="btn btn-info"> Wyślij wiadomość</a> <a
-						class="btn btn-info" href="">Sprawdź wiadomości</a> <a
-						class="btn btn-info" href="">Wyświetl listę Twoich zadań</a> <a
-						class="btn btn-warning" href="">Ustawienia konta</a> <a
-						class="btn btn-danger" href="">Wyloguj się</a>
+				<div class="jumbotron" style="width:90vw">
+					<a class="btn btn-info clickToShowSender">Send message</a> <a
+						class="btn btn-info clickToShowMess">Recived messages</a> <a
+						class="btn btn-info" >Check your tasks</a> <a
+						class="btn btn-warning" >Settings</a> <a
+						class="btn btn-danger" href="">Log out</a>
 				</div>
 			</div>
 		</div>
-		<span>Witaj <%=name%> w przyszłości znajdziesz tutaj dodatkowe
-			funkcjonalności.
-		</span>
+
 		<div class="row">
-			<div class="alert alert-dismissible alert-success" id="messagesSuccessAfterSend" >
-				<button type="button" class="close"  id="clickToHideMessagesSuccessAfterSend"data-dismiss="alert">&times;</button>
+			<div class="alert alert-dismissible alert-success "
+				id="messagesSuccessAfterSend" style="display: none;">
+				<button type="button" class="close"
+					id="clickToHideMessagesSuccessAfterSend" data-dismiss="alert">&times;</button>
 				<strong>Well done!</strong> You successfully send a message.
 			</div>
-			<div class="alert alert-dismissible alert-primary" id="messagesErrorAfterSend">
-				<button type="button" class="close" id="clickToHideMessagesErrorAfterSend" data-dismiss="alert">&times;</button>
+			<div class="alert alert-dismissible alert-primary"
+				id="messagesErrorAfterSend" style="display: none;">
+				<button type="button" class="close"
+					id="clickToHideMessagesErrorAfterSend" data-dismiss="alert">&times;</button>
 				<strong>Error!</strong> Message isn't send
 			</div>
 		</div>
@@ -62,8 +74,8 @@
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div>
-									<div class="modal-header" id="clickToShowSender">
-										<h5 class="modal-title">Wyślij wiadomość: &nbsp;</h5>
+									<div class="modal-header clickToShowSender">
+										<h5 class="modal-title">Send message to: &nbsp;</h5>
 										<div class="form-group">
 											<select class="custom-select" name="select">
 												<option selected="">Open this select menu</option>
@@ -84,7 +96,7 @@
 										<div class="modal-footer">
 											<div class="form-group">
 												<button type="submit" class="btn btn-info"
-													id="clickToShowIsSend">Wyślij wiadomość</button>
+													id="clickToShowIsSend">Send</button>
 												<button type="button" class="btn btn-secondary"
 													id="clickToHideSender" data-dismiss="modal">Close</button>
 											</div>
@@ -96,26 +108,30 @@
 					</form>
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
-							<div class="modal-header" id="clickToShowMess">
-								<h5 class="modal-title">Odbierz wiadomości</h5>
+							<div class="modal-header clickToShowMess">
+								<h5 class="modal-title">Recived messages</h5>
 
 							</div>
 							<div id="hideGetMess">
 								<div class="modal-body">
 									<ul class="list-group">
-										<li
+										<c:forEach items="${recivedMessages}" var="messages">
+												<li
 											class="list-group-item d-flex justify-content-between align-items-center">
-											Cras justo odio <span class="badge badge-primary badge-pill"></span>
-										</li>
-										<li
-											class="list-group-item d-flex justify-content-between align-items-center">
-											Dapibus ac facilisis in <span
-											class="badge badge-primary badge-pill"></span>
-										</li>
-										<li
-											class="list-group-item d-flex justify-content-between align-items-center">
-											Morbi leo risus <span class="badge badge-primary badge-pill"></span>
-										</li>
+												<div class="card">
+												  <div class="card-body">
+												    <h4 class="card-title">From: ${messages.addedBy}</h4>
+												    <h6 class="card-subtitle mb-2 text-muted">${messages.date}</h6>
+												    <p class="card-text">${messages.text}</p>													
+												  </div>
+												  <div class="card-footer text-muted">
+												    <a href="DeleteMessage?id=${messages.id}" class="card-link">Delete</a>
+												  </div>
+												</div>
+											</li>	
+										</c:forEach>
+									
+										
 									</ul>
 								</div>
 								<div class="modal-footer">
@@ -149,8 +165,10 @@
 							</div>
 						</div>
 					</div>
+					<br>
 					<div class="modal-content">
-						<h3 class="modal-header" id="clickToShowToDo">To do list</h3>
+						<div>
+						<h5 class="modal-header" id="clickToShowToDo">To do list</h5>
 						<div id="hideToDo">
 							<div class="modal-body">
 								<h5 class="modal-title">Add new task</h5>
@@ -179,117 +197,131 @@
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-success">Pokaż
-									zrobione zadania!</button>
+								<button type="button" class="btn btn-success">Check done tasks!</button>
 								<button type="button" id="clickToHideToDo"
 									class="btn btn-secondary" data-dismiss="modal">Close</button>
 							</div>
+						</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="col-xs-12 .col-sm-6 .col-lg-8">
-				<div class="jumbotron">
+				<div class="jumbotron" style="width:50vw">
 					<table class="table table-hover">
 						<tr align="center">
-							<th>Temat zadania</th>
-							<th>Treść</th>
-							<th>Data zakończenia</th>
-							<th>Poproś o pomoc</th>
-							<th>Dodaj rozwiązanie</th>
-							<th>Wyślij rozwiązanie</th>
+							<th>Id</th>
+							<th>Title</th>
+							<th>Description</th>
+							<th></th>
+						
 						</tr>
+						<c:forEach items="${exercise}" var="exercise">
+							<tr align="center">
+								<td>${exercise.id}</td>
+								<td>${exercise.title}</td>
+								<td>${exercise.description}</td>
+								<td><a class="btn btn-primary" href="AddNewSolution">Submit answer</a>
+
+							</tr>
+						</c:forEach>
 					</table>
 				</div>
 			</div>
-
+		</div>
+	</div>
+		
 
 
 
 			<script
 				src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+				  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+ 				 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+				
 			<script>
-                                $(function() {
-                                $('#hidePomodoro').hide()
-                                $('#clickToShowPom').on('click', function() {
-                                    if ($('#hidePomodoro').css('display') === 'none') {
-                                        $('#hidePomodoro').fadeIn('slow');
-                                    }
-                                });
+				$(function() {
+					$('#hidePomodoro').hide()
+					$('#clickToShowPom').on('click', function() {
+						if ($('#hidePomodoro').css('display') === 'none') {
+							$('#hidePomodoro').fadeIn('slow');
+						}
+					});
 
-                                $('#clickToHidePomodoro').on('click', function() {
-                                    if ($('#hidePomodoro').css('display') !== 'none') {
-                                        $('#hidePomodoro').fadeOut('slow');
-                                    }
-                                });
+					$('#clickToHidePomodoro').on('click', function() {
+						if ($('#hidePomodoro').css('display') !== 'none') {
+							$('#hidePomodoro').fadeOut('slow');
+						}
+					});
 
-                                $('#hideToDo').hide()
-                                $('#clickToShowToDo').on('click', function() {
-                                    if ($('#hideToDo').css('display') === 'none') {
-                                        $('#hideToDo').fadeIn('slow');
-                                    }
-                                });
-                                $('#clickToHideToDo').on('click', function() {
-                                    if ($('#hideToDo').css('display') !== 'none') {
-                                        $('#hideToDo').fadeOut('slow');
-                                    }
-                                });
+					$('#hideToDo').hide()
+					$('#clickToShowToDo').on('click', function() {
+						if ($('#hideToDo').css('display') === 'none') {
+							$('#hideToDo').fadeIn('slow');
+						}
+					});
+					$('#clickToHideToDo').on('click', function() {
+						if ($('#hideToDo').css('display') !== 'none') {
+							$('#hideToDo').fadeOut('slow');
+						}
+					});
 
-                                $('#hideSendMess').hide()
-                                $('#clickToShowSender').on('click', function() {
-                                    if ($('#hideSendMess').css('display') === 'none') {
-                                        $('#hideSendMess').fadeIn('slow');
-                                    }
-                                });
-                                $('#clickToHideSender').on('click', function() {
-                                    if ($('#hideSendMess').css('display') !== 'none') {
-                                        $('#hideSendMess').fadeOut('slow');
-                                    }
-                                });
+					$('#hideSendMess').hide()
+					$('.clickToShowSender').on('click', function() {
+						if ($('#hideSendMess').css('display') === 'none') {
+							$('#hideSendMess').fadeIn('slow');
+						}
+					});
+					$('#clickToHideSender').on('click', function() {
+						if ($('#hideSendMess').css('display') !== 'none') {
+							$('#hideSendMess').fadeOut('slow');
+						}
+					});
 
-                                $('#hideGetMess').hide()
-                                $('#clickToShowMess').on('click', function() {
-                                    if ($('#hideGetMess').css('display') === 'none') {
-                                        $('#hideGetMess').fadeIn('slow');
-                                    }
-                                });
-                                $('#clickToHideMess').on('click', function() {
-                                    if ($('#hideGetMess').css('display') !== 'none') {
-                                        $('#hideGetMess').fadeOut('slow');
-                                    }
-                                });
-                                var test = "<%=request.getAttribute("isSend")%>";	  
-                                $("#messagesSuccessAfterSend").hide()
-                                $('#clickToShowIsSend').on('click', function() {
-                                    var test = "<%=request.getAttribute("isSend")%>";	
-                                    
-                                    if (test == "yes" ||  $('#messagesSuccessAfterSend').css('display') === 'none') { 
-								        $('#messagesSuccessAfterSend').fadeIn('slow');
-										}	      
-                                });
+					$('#hideGetMess').hide()
+					$('.clickToShowMess').on('click', function() {
+						if ($('#hideGetMess').css('display') === 'none') {
+							$('#hideGetMess').fadeIn('slow');
+						}
+					});
+					$('#clickToHideMess').on('click', function() {
+						if ($('#hideGetMess').css('display') !== 'none') {
+							$('#hideGetMess').fadeOut('slow');
+						}fl
+					});
+					var test = '<%=isSend%>';
+					console.log(test)
+					
 
-                                $("#messagesErrorAfterSend").hide()
-                                $('#clickToShowIsSend').on('click', function() {
-                                    var test = "<%=request.getAttribute("isSend")%>";                                 
-									console.log(test);						    
-                                    if (test == "no" &&  $('#messagesErrorAfterSend').css('display') === 'none') {                                                                
-								        $('#messagesErrorAfterSend').fadeIn('slow');
-								        										}	      
-                                });
-                                
-                                $('#clickToHideMessagesSuccessAfterSend').on('click', function() {
-                                    if ($('#messagesSuccessAfterSend').css('display') !== 'none') {
-                                        $('#messagesSuccessAfterSend').fadeOut('slow');
-                                    }
-                                });
-                                
-                                $('#clickToHideMessagesErrorAfterSend').on('click', function() {
-                                    if ($('#messagesErrorAfterSend').css('display') !== 'none') {
-                                        $('#messagesErrorAfterSend').fadeOut('slow');
-                                    }
-                                });
-                                
+					$('#clickToShowIsSend').on('click',function() {
+								console.log(test);
+								var test ='<%=isSend%>';
+								if (test == "yes" || $('#messagesSuccessAfterSend').css('display') === 'none') {
+									$('#messagesSuccessAfterSend').toggle("slide");
+									console.log("1." +test);
+									
+								}else if(test == "no" && ($('#messagesErrorAfterSend').css('display') === 'none')) {
+									$('#messagesErrorAfterSend').toggle("slide");
+									console.log("2." +test);
+								}
+								console.log("3." +test);
+							});
+
+					
+			
+					$('#clickToHideMessagesSuccessAfterSend').on('click',function() {
+								if ($('#messagesSuccessAfterSend').css('display') !== 'none') {
+									$('#messagesSuccessAfterSend').fadeOut('slow');
+								}
+							});
+
+					$('#clickToHideMessagesErrorAfterSend').on('click',function() {
+										if ($('#messagesErrorAfterSend').css('display') !== 'none') {
+											$('#messagesErrorAfterSend').fadeOut('slow');
+										}
+									});
+
 				});
 			</script>
 

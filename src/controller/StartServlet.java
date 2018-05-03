@@ -24,7 +24,7 @@ public class StartServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		HttpSession session = request.getSession();
 
 		String loginEmail = request.getParameter("loginEmail");
@@ -35,14 +35,17 @@ public class StartServlet extends HttpServlet {
 
 		String systemPassword = user.getPassword();
 		Integer systemUserGroupId = user.getUserGroupId();
-
+	
+		session.setAttribute("systemUserId", user.getId());	
 		request.setAttribute("loginEmail", loginEmail);
 
 		if (BCrypt.checkpw(loginPassword, systemPassword) && systemUserGroupId == 1) {
 			session.setAttribute("systemUsername", user.getName());
 			session.setAttribute("systemUserEmail", user.getEmail());
 			session.setAttribute("systemUserGroupId", user.getUserGroupId());
-			session.setAttribute("systemUserId", user.getId());
+			session.setAttribute("systemUserId", user.getId());	
+			System.out.println("User id: " + session.getAttribute("systemUserId") );
+			System.out.println("User Groudp id: " + session.getAttribute("systemUserGroupId") );
 			getServletContext().getRequestDispatcher("/mainUserView").forward(request, response);
 		} else if (BCrypt.checkpw(loginPassword, systemPassword) && systemUserGroupId == 2) {
 			session.setAttribute("systemUsername", user.getName());
